@@ -1,0 +1,86 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: normal;
+    font-size: 14px;
+}
+body{
+    background: #e2e2e2;
+}
+.wrapper{
+    width: 588px;
+    height: 418px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 46px 59px 62px 42px;
+}
+button, input{
+    outline: none;
+}
+header{
+    height: 32px;
+    width: 100%;
+}
+#mainNavigation{
+    width: 270px;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+.mainTab{
+    height: 32px;
+    text-align: center;
+    color: #000000;
+    border: 0;
+    cursor: pointer;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+}
+.mainTab:hover, .currentTab{
+    background: #0b7fb2;
+    color: #ffffff;
+}
+.tabProfile{
+    width: 92px;
+}
+.tabFriend{
+    width: 169px;
+}
+#bodyProfile{
+    width: 100%;
+    height: calc(100% - 32px);
+    background: #ffffff;
+    border-radius: 6px;
+    border-top-left-radius: 0;
+    padding: 15px;
+}
+.myProfile{
+    display: flex;
+}
+.imageUser{
+    width: 147px;
+    height: auto;
+    padding-right: 15px;
+    padding-bottom: 6px;
+}
+.imageUser > img{
+    width: 132px;
+    height: 169px;
+}
+#addFriend{
+    width: 100%;
+    height: 30px;
+    background: #e66700;
+    border-radius: 6px;
+    color: #ffffff;
+}
+#addFriend:hover{
+    background: #e67f00;
+}
+.mainInfoUser{
+    width: calc(100% - 147px);
+}

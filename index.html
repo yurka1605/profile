@@ -13,7 +13,53 @@
     <link rel="stylesheet" type="text/css" media="screen" href="css/main.css">
 </head>
 <body>
-
+    <section class="wrapper">
+        <header>
+            <nav id="mainNavigation">
+                <button class="mainTab tabProfile" type="button">
+                    Профиль
+                </button>
+                <button class="mainTab currentTab tabFriend" type="button">
+                    Друзья пользователя
+                </button>
+            </nav>           
+        </header>
+        <main id="bodyProfile">
+            <section class="myProfile profileTabBlock">
+                <section class="imageUser">
+                    <img src="./assets/UserPic.png" title="User Pucture" alt="UserPicture">
+                    <button id="addFriend" type="button">Добавить в друзья</button>
+                </section>
+                <section class="mainInfoUser">
+                    <div id="MainInfo">
+                        <h2 id="fullNameUser">Виталя Гора</h2>
+                        <span class="userLocation">Ижевск</span>
+                    </div>
+                    <div class="userContacts">
+                        <div class="contacts">
+                            <span class="family">Семейное положение:</span>
+                            <span class="valueFamily">Холост</span>
+                        </div>
+                        <div class="contacts">
+                            <span class="phoneNumber">Номер телефона:</span>
+                            <span class="valuePhoneNumber">+7 (922) 123 32 43</span>
+                        </div>
+                        <div class="contacts">
+                            <span class="email">E-mail:</span>
+                            <span class="valueEmail">admin@mail.ru</span>
+                        </div>
+                    </div>
+                    <div class="userHobbie">
+                        <span>Интересы</span>
+                        <button type="button">Музыка</button>
+                    </div>
+                </section>
+            </section>
+            <section class="friendUser profileTabBlock">
+                
+            </section>
+        </main>
+    </section>
     <script type="text/javascript" src="js/main.js"></script>
 </body>
 </html>
