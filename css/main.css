@@ -1,7 +1,8 @@
 *{
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
     font-family: 'Times New Roman', Times, serif;
     font-weight: normal;
     font-size: 14px;
@@ -9,18 +10,35 @@
 body{
     background: #e2e2e2;
 }
+button, input{
+    outline: none;
+    -webkit-appearance: none;
+       -moz-appearance: none;
+            appearance: none;
+    -webkit-transition: .5s;
+    transition: .5s;
+}
+a{
+    color: #5399c4;
+    font-weight: bold;
+    text-transform: capitalize;
+}
+
+/* Обертка страницы */
+
 .wrapper{
     width: 588px;
     height: 418px;
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
     padding: 46px 59px 62px 42px;
 }
-button, input{
-    outline: none;
-}
+
+/* Табы переключения */
+
 header{
     height: 32px;
     width: 100%;
@@ -28,21 +46,30 @@ header{
 #mainNavigation{
     width: 270px;
     height: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    justify-content: space-between;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
 }
 .mainTab{
     height: 32px;
     text-align: center;
     color: #000000;
+    background: #ffffff;
     border: 0;
+    font-size: 16px;
     cursor: pointer;
     border-top-left-radius: 6px;
     border-top-right-radius: 6px;
 }
-.mainTab:hover, .currentTab{
+.currentTab{
     background: #0b7fb2;
     color: #ffffff;
+}
+.currentTab:hover{
+    background: #2591be;
 }
 .tabProfile{
     width: 92px;
@@ -50,15 +77,30 @@ header{
 .tabFriend{
     width: 169px;
 }
+
+/* Отображдение информации о профиле */
+
 #bodyProfile{
     width: 100%;
     height: calc(100% - 32px);
+    position: relative;
     background: #ffffff;
     border-radius: 6px;
     border-top-left-radius: 0;
     padding: 15px;
+    margin-top: -1px;
 }
+.profileTabBlock{
+    width: calc(100% - 32px);
+    position: absolute;
+    height: calc(100% - 32px);
+}
+
+/* Блок информации о профиле */
+
 .myProfile{
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
 }
 .imageUser{
@@ -71,16 +113,292 @@ header{
     width: 132px;
     height: 169px;
 }
-#addFriend{
-    width: 100%;
+.hobbiesControl{
+    display: table-cell;
+    width: 132px;
     height: 30px;
-    background: #e66700;
+    text-align: center;
+    background: rgb(230,103,0);
+    background: -webkit-gradient(linear, left bottom, left top, color-stop(41%, rgba(230,103,0,1)), color-stop(56%, rgba(230,127,0,1)));
+    background: linear-gradient(0deg, rgba(230,103,0,1) 41%, rgba(230,127,0,1) 56%);
     border-radius: 6px;
     color: #ffffff;
+    cursor: pointer;
+    vertical-align: middle;
+    -webkit-transition: .5s;
+    transition: .5s;
 }
 #addFriend:hover{
-    background: #e67f00;
+    background: rgb(230,127,0);
+    background: -webkit-gradient(linear, left bottom, left top, color-stop(41%, rgba(230,127,0,1)), color-stop(56%, rgba(230,103,0,1)));
+    background: linear-gradient(0deg, rgba(230,127,0,1) 41%, rgba(230,103,0,1) 56%);
 }
 .mainInfoUser{
     width: calc(100% - 147px);
+    height: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: flex-start;
+}
+#mainInfo{
+    height: auto;
+}
+#fullNameUser{
+    font-size: 22px;
+    font-weight: 600;
+    text-transform: capitalize;
+}
+.userLocation, .friendStatus{
+    font-size: 10px;
+    text-transform: capitalize;
+    color: #99bf96;
+}
+.userContacts{
+    height: auto;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    padding: 20px 0;
+}
+.haracteristic, .valueHaracteristic{
+    width: 50%;
+    height: 70px;
+}
+.family, .phoneNnumber, .email, .valueFamily, .valuePhoneNnumber, .valueEmail{
+    display: block;
+    padding: 5px 0;
+}
+.valueEmail{
+    word-break: break-word;
+    text-transform: lowercase
+}
+.haracteristic span, .hobbies{
+    font-weight: bold;
+}
+.userHobby{
+    height: auto;
+    max-height: 90px;
+    overflow: auto;
+    margin-top: 6px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+}
+.hobby{
+    width: auto;
+    border: 1px solid #d5d5d5;
+    padding: 5px 10px;
+    margin-right: 5px;
+    margin-bottom: 5px;
+    color: #3487ba;
+    cursor: pointer;
+    -webkit-transition: .5s;
+    transition: .5s;
+    text-transform: capitalize;
+    max-width: 150px;
+    word-break: break-word;
+}
+.hobby:hover{
+    background: #f3f3f3;
+    color: #000000;
+}
+
+
+/* Информация о друзьях */
+
+.friendsUser{
+    display: none;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    overflow: auto;
+}
+.friendUser{
+    position: relative;
+    width: 219px;
+    height: 80px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: nowrap;
+        flex-wrap: nowrap;
+}
+.friendUser > img {
+    width: 60px;
+    height: 60px;
+    margin: 10px 0;
+    
+}
+.infoFriend{
+    width: calc(100% - 60px);
+    height: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    padding: 10px;
+}
+.mainInfoFriend{
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start;
+}
+.cityFriend{
+    font-size: 10px;
+    text-transform: capitalize;
+}
+
+/* popup */
+.popupAddHobby{
+    z-index: 10110;
+    width: 250px;
+    height: 100px;
+    position: fixed;
+    background: #ffffff;
+    top: -100%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+    display: -webkit-box;
+    display: -ms-flexbox;
+    -webkit-transition: all linear 0.4s;
+    transition: all linear 0.4s;
+    border-radius: 10px;
+    border: 2px solid #0b7fb2;
+    padding: 20px;
+    text-align: center;
+}
+.fieldEnterHobby{
+    height: 30px;
+    padding: 5px 10px;
+    color: #0b7fb2;
+    border: 1px solid #0b7fb2;
+    border-radius: 6px;
+    font-weight: bold;
+}
+.addHobby{
+    display: inline-block!important;
+    line-height: 30px;
+    margin-top: 10px;
+}
+.openPopup{
+    top: 50%;
+}
+.closePopup{
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    top: 0;
+    right: 0;
+    margin-top: -15px;
+    margin-right: -15px;
+    border-radius: 50%;
+    background: #0b7fb2;
+    cursor: pointer;
+    border: 1px solid #ffffff;
+}
+.closePopup:hover{
+    background: #ffffff;
+    border-color: #0b7fb2;
+}
+.closePopup:hover:after, .closePopup:hover:before{
+    background: #0b7fb2;
+}
+.closePopup::before, .closePopup::after{
+    content: '';
+    height: 2px;
+    width: 20px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%) rotate(-45deg);
+            transform: translate(-50%, -50%) rotate(-45deg);
+    background: #ffffff;
+}
+.closePopup::before{
+    -webkit-transform: translate(-50%, -50%) rotate(45deg);
+            transform: translate(-50%, -50%) rotate(45deg);
+}
+/* Стилизация скролла */
+    
+::-webkit-scrollbar-track { 
+    background-color:#ededed;
+    border-radius: 7px;
+} 
+    
+::-webkit-scrollbar-thumb { 
+    border-radius: 7px;
+    background-color:#107bb1; 
+} 
+    
+::-webkit-scrollbar{ 
+    width: 7px;
+    height: 7px;
+}
+
+/* filter */
+
+.filter{
+    -webkit-filter: blur(10px);
+            filter: blur(10px);
+}
+
+/*spinner*/
+.overlay{
+    z-index: 1;
+    width: 100%;
+    height: 100vh;
+    background: #000000;
+    opacity: 0.7;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+}
+.spinner{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+    -webkit-transform-origin: center;
+            transform-origin: center;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    border: 8px solid #ffffff;
+    border-top: 8px solid #4a76a8;
+    z-index: 10100;
+    display: block;
+    -webkit-animation: spinner 1.5s linear infinite;
+            animation: spinner 1.5s linear infinite;
+}
+@-webkit-keyframes spinner {
+    from {-webkit-transform: translate(-50%, -50%) rotate(0deg);transform: translate(-50%, -50%) rotate(0deg);}
+    to {-webkit-transform: translate(-50%, -50%) rotate(360deg);transform: translate(-50%, -50%) rotate(360deg);}
+}
+@keyframes spinner {
+    from {-webkit-transform: translate(-50%, -50%) rotate(0deg);transform: translate(-50%, -50%) rotate(0deg);}
+    to {-webkit-transform: translate(-50%, -50%) rotate(360deg);transform: translate(-50%, -50%) rotate(360deg);}
 }
