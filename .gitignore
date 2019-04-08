@@ -61,4 +61,7 @@ typings/
 .next
 
 # WebStorm
-/.idea
+.idea
+
+#vscode
+.vscode

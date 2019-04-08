@@ -11,55 +11,61 @@
     <meta name ="author" content ="Litvinov Yuriy">
     <link rel="shortcut icon" href="favicon.ico" type="image/ico">
     <link rel="stylesheet" type="text/css" media="screen" href="css/main.css">
+    <script defer src="js/vars.js"></script>
+    <script defer src="js/function.js"></script>
+    <!-- <script defer src="js/main.js"></script> -->
+    <!--[if IE]><script type="text/javascript" src="mainIE.js"></script>![endif]-->
 </head>
 <body>
-    <section class="wrapper">
+    <main class="wrapper filter">
         <header>
             <nav id="mainNavigation">
-                <button class="mainTab tabProfile" type="button">
+                <button class="mainTab tabProfile" data-tab-id='0' type="button">
                     Профиль
                 </button>
-                <button class="mainTab currentTab tabFriend" type="button">
+                <button class="mainTab tabFriend currentTab" data-tab-id="1" type="button">
                     Друзья пользователя
                 </button>
             </nav>           
         </header>
-        <main id="bodyProfile">
+        <section id="bodyProfile">
             <section class="myProfile profileTabBlock">
                 <section class="imageUser">
-                    <img src="./assets/UserPic.png" title="User Pucture" alt="UserPicture">
-                    <button id="addFriend" type="button">Добавить в друзья</button>
+                    <img src="" title="Avatar" alt="Avatar">
+                    <div class="hobbiesControl" type="button">Добавить интерес</div>
                 </section>
                 <section class="mainInfoUser">
-                    <div id="MainInfo">
-                        <h2 id="fullNameUser">Виталя Гора</h2>
-                        <span class="userLocation">Ижевск</span>
+                    <div id="mainInfo">
+                        <input type="text" class="fullNameUser" data-name-field="fullName">
+                        <input type="text" class="userLocation" data-name-field="city">
                     </div>
                     <div class="userContacts">
-                        <div class="contacts">
+                        <div class="haracteristic">
                             <span class="family">Семейное положение:</span>
-                            <span class="valueFamily">Холост</span>
-                        </div>
-                        <div class="contacts">
                             <span class="phoneNumber">Номер телефона:</span>
-                            <span class="valuePhoneNumber">+7 (922) 123 32 43</span>
-                        </div>
-                        <div class="contacts">
                             <span class="email">E-mail:</span>
-                            <span class="valueEmail">admin@mail.ru</span>
+                        </div>
+                        <div class="valueHaracteristic">
+                            <input type="text" class="valueFamily" data-name-field="info.family">
+                            <input type="tel" class="valuePhoneNumber" data-name-field="info.phone">
+                            <a href="#"><input type="email" class="valueEmail" data-name-field="info.email"></a>
                         </div>
                     </div>
-                    <div class="userHobbie">
-                        <span>Интересы</span>
-                        <button type="button">Музыка</button>
+                    <span class="hobbies">Интересы</span>
+                    <div class="userHobby">
                     </div>
                 </section>
             </section>
-            <section class="friendUser profileTabBlock">
-                
+            <section class="friendsUser profileTabBlock">
             </section>
-        </main>
+        </section>
+    </main>
+    <section class="popupAddHobby">
+        <div class="closePopup"></div>
+        <input type="text" class="fieldEnterHobby" value="" placeholder="Enter you hobby">
+        <div class="hobbiesControl addHobby" type="button">Добавить интерес</div>
     </section>
-    <script type="text/javascript" src="js/main.js"></script>
+    <section class="overlay"></section>
+    <section class="spinner"></section>
 </body>
 </html>
