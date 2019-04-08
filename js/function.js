@@ -23,16 +23,19 @@ var getActiveTab = function getActiveTab(active) {
 };
 
 var activePopup = function activePopup() {
-    if (event.target.className !== 'closePopup') {
-        popupAddHobby.classList.add('openPopup');
-        wrapper.classList.add('filter');
-        overlay.style.display = 'block';
-    } else {
+    var eventUser = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
+
+    if (event.target.className === 'closePopup' || eventUser === 'close') {
         popupAddHobby.classList.remove('openPopup');
         wrapper.classList.remove('filter');
         overlay.style.display = 'none';
+    } else {
+        popupAddHobby.classList.add('openPopup');
+        wrapper.classList.add('filter');
+        overlay.style.display = 'block';
     }
 };
+
 var addHobbies = function addHobbies(inputValue) {
     var currentHobbies = JSON.parse(localStorage.getItem('hobby'));
     var countIdentical = 0;
@@ -40,10 +43,11 @@ var addHobbies = function addHobbies(inputValue) {
         if (inputValue === element) countIdentical++;
     });
     if (countIdentical === 0) {
-        currentHobbies.push(inputValue);
+        currentHobbies.splice(0, 0, inputValue);
         localStorage.setItem('hobby', JSON.stringify(currentHobbies));
         createHobbyDomNode(inputValue);
         fieldEnterHobby.value = '';
+        activePopup('close');
     } else console.log('Hobby with this name already exists');
 };
 
@@ -56,4 +60,14 @@ var deleteHobby = function deleteHobby(nameHobby) {
         };
     }
     localStorage.setItem('hobby', JSON.stringify(notDeleteElem));
+};
+
+var changeInfo = function changeInfo(dataName) {
+    var arrProp = dataName.split('.');
+    var elementChange = document.querySelector('.' + event.target.className);
+    elementChange.addEventListener('change', function () {
+        var currentProfileData = JSON.parse(localStorage.getItem('profile'));
+        if (arrProp.length > 1) currentProfileData['' + arrProp[0]]['' + arrProp[1]] = elementChange.value;else currentProfileData['' + arrProp[0]] = elementChange.value;
+        localStorage.setItem('profile', JSON.stringify(currentProfileData));
+    });
 };

@@ -147,10 +147,15 @@ header{
         -ms-flex-pack: start;
             justify-content: flex-start;
 }
+.mainInfoUser input:focus{
+    border-color: #0b7fb2!important;
+}
 #mainInfo{
     height: auto;
 }
-#fullNameUser{
+.fullNameUser{
+    border: 1px solid transparent;
+    display: block;
     font-size: 22px;
     font-weight: 600;
     text-transform: capitalize;
@@ -160,6 +165,9 @@ header{
     text-transform: capitalize;
     color: #99bf96;
 }
+.userLocation{
+    border: 1px solid transparent;
+}
 .userContacts{
     height: auto;
     display: -webkit-box;
@@ -168,14 +176,24 @@ header{
     padding: 20px 0;
 }
 .haracteristic, .valueHaracteristic{
-    width: 50%;
+    width: auto;
     height: 70px;
 }
-.family, .phoneNnumber, .email, .valueFamily, .valuePhoneNnumber, .valueEmail{
+.family, .phoneNumber, .email{
     display: block;
-    padding: 5px 0;
+    width: 140px;
+    height: 23px;
+    line-height: 23px;
+}
+.valuePhoneNumber, .valueFamily, .valueEmail{
+    display: block;
+    height: 23px;
+    border: 1px solid transparent;
+    max-width: 168px;
+    padding: 0 5px;
 }
 .valueEmail{
+    color: #0b7fb2;
     word-break: break-word;
     text-transform: lowercase
 }

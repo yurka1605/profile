@@ -13,7 +13,8 @@
     <link rel="stylesheet" type="text/css" media="screen" href="css/main.css">
     <script defer src="js/vars.js"></script>
     <script defer src="js/function.js"></script>
-    <script defer src="js/main.js"></script>
+    <!-- <script defer src="js/main.js"></script> -->
+    <!--[if IE]><script type="text/javascript" src="mainIE.js"></script>![endif]-->
 </head>
 <body>
     <main class="wrapper filter">
@@ -30,13 +31,13 @@
         <section id="bodyProfile">
             <section class="myProfile profileTabBlock">
                 <section class="imageUser">
-                    <img src="" title="User Pucture" alt="UserPicture">
+                    <img src="" title="Avatar" alt="Avatar">
                     <div class="hobbiesControl" type="button">Добавить интерес</div>
                 </section>
                 <section class="mainInfoUser">
                     <div id="mainInfo">
-                        <h2 id="fullNameUser"></h2>
-                        <span class="userLocation"></span>
+                        <input type="text" class="fullNameUser" data-name-field="fullName">
+                        <input type="text" class="userLocation" data-name-field="city">
                     </div>
                     <div class="userContacts">
                         <div class="haracteristic">
@@ -45,9 +46,9 @@
                             <span class="email">E-mail:</span>
                         </div>
                         <div class="valueHaracteristic">
-                            <span class="valueFamily"></span>
-                            <span class="valuePhoneNumber"></span>
-                            <a class="valueEmail" href="#"></a>
+                            <input type="text" class="valueFamily" data-name-field="info.family">
+                            <input type="tel" class="valuePhoneNumber" data-name-field="info.phone">
+                            <a href="#"><input type="email" class="valueEmail" data-name-field="info.email"></a>
                         </div>
                     </div>
                     <span class="hobbies">Интересы</span>

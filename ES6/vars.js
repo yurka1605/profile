@@ -17,7 +17,7 @@ const tabBlock = document.querySelectorAll('.profileTabBlock');
 
 // templates
 const imageUser = document.querySelector('.imageUser img'); //avatar
-const fullnameUser = document.getElementById('fullNameUser'); // name
+const fullNameUser = document.querySelector('.fullNameUser'); // name
 const cityUser = document.querySelector('#mainInfo .userLocation'); // city
 
 //info about user
@@ -53,3 +53,7 @@ const closePopup = document.querySelector('.closePopup');
 const addHobby = document.querySelector('.addHobby');
 const fieldEnterHobby = document.querySelector('.fieldEnterHobby');
 const hobbyName = document.getElementsByClassName('hobby');
+
+// изменение информации
+
+const mainInfoUser = document.querySelector('.mainInfoUser');
