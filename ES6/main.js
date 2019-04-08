@@ -1,10 +1,10 @@
 'use strict';
-
 class Profile {
-    constructor(state, url, currentTab = 0) {
+    constructor(state, url, currentUserAgent, currentTab = 0) {
         this._state = state;
         this.url = url;
         this.tab = currentTab;
+        this.currentUserAgent = /msie 10/i.test(currentUserAgent);
     }
     set userProfile(local) {
         state.length !== 0 ? this._state = local : false;
@@ -18,68 +18,51 @@ class Profile {
     }
     // init
     init() {
-        // Загрузка обновление страницы
+        // Условие выбора данных для загрузки(обновления) страницы
         if (!this.userProfile[0])  {
             this.getDataUser();
             sessionStorage.setItem('tabId', this.tab);
         } else this.renderDataUsers(...this.userProfile);
-        
+
         // Табы
-        mainNavigation.addEventListener('click', event => {
-            getActiveTab(event.target.dataset.tabId);
+        mainNavigation.addEventListener('click', (event) =>{
+            this.currentUserAgent !== true
+                ? getActiveTab(event.target.dataset.tabId)
+                : getActiveTab(event.target.getAttribute('data-tab-id'));// for IE 10
         });
 
         // Добавление интереса
-        hobbiesControl.addEventListener('click', activePopup);
-        closePopup.addEventListener('click', activePopup);
-        addHobby.addEventListener('click', () => {
+        hobbiesControl.addEventListener('click', (event) => activePopup(event));
+        closePopup.addEventListener('click', (event) => activePopup(event));
+        addHobby.addEventListener('click', (event) => {
             let inputValue = fieldEnterHobby.value.toLowerCase();
-            inputValue !== '' ? addHobbies(inputValue) : console.log('Enter name hobby');
+            inputValue !== '' ? addHobbies(inputValue, event) : console.log('Enter name hobby');
         });
-        userHobby.addEventListener('click', () => { 
-            event.target.className !== 'userHobby' ? deleteHobby(event.target.innerHTML) : false; 
+        userHobby.addEventListener('click', (event) => {
+            event.target.className !== 'userHobby' ? deleteHobby(event.target.innerHTML) : false;
         });
 
-        //Изменение данных 
+        //Изменение данных профиля
         mainInfoUser.addEventListener('click', event => {
-            event.target.tagName === 'INPUT' ? changeInfo(event.target.dataset.nameField) : false;
+            if (event.target.tagName === 'INPUT') {
+                this.currentUserAgent !== true
+                    ? changeInfo(event.target.dataset.nameField, event)
+                    : changeInfo(event.target.getAttribute('data-name-field'), event); // for IE 10
+            }
         })
     }
 
     //getData
     getDataUser() {
-        const headers = new Headers();
-        const initRequest = {
-            method: 'GET',
-            headers: headers,
-            mode: 'cors',
-            cache: 'default' 
-        };
-        const request = new Request(this.url, initRequest);
-        
-        fetch(request)
-            .then( response => {
-                if (response.status === 200) return response.json();
-                else throw new Error('Response status not 200!');
-            })
-            .then( success => {
-                this.parseDataUsers(success.results);
-            })
-            .catch( message => {
-                console.log('error:' + message);
-                setTimeout((url) => {
-                    this.getDataUser(url);
-                }, 60000);
-                this.renderDataUsers();
-            })
+        this.currentUserAgent ? fetcherForIE10() : fetcherForAll();
     }
 
     //Parse
     parseDataUsers(users) {
         // первого юзера в списке беру как основного
-        let dataMainProfile, 
-        hobby,
-        friends = [];
+        let dataMainProfile = {},
+            hobby = [],
+            friends = [];
 
         users.forEach( (user, i) => {
             if (i === 0 ) {
@@ -90,9 +73,9 @@ class Profile {
                     info: {
                         family: user.gender === 'male' ? 'Холост' : 'Married',
                         phone: user.phone,
-                        email: user.email, 
+                        email: user.email,
                     },
-                }
+                };
                 hobby = ['cat', 'car', 'music', 'sport'];
                 localStorage.setItem('hobby' ,JSON.stringify(hobby));
                 localStorage.setItem('profile', JSON.stringify(dataMainProfile));
@@ -103,7 +86,7 @@ class Profile {
                     city: `${user.location.city}`,
                     status: user.gender === 'male' ? 'online' : '',
                 });
-            } 
+            }
         });
 
         localStorage.setItem('friends', JSON.stringify(friends));
@@ -114,7 +97,7 @@ class Profile {
     renderDataUsers(user = defaultSettings, hobbies = [], friends = []) {
         const tabId = sessionStorage.getItem('tabId');
         getActiveTab(tabId);
-        
+
         // render основного профиля
         imageUser.src = user.picture;
         imageUser.title = imageUser.alt = user.fullName;
@@ -126,7 +109,7 @@ class Profile {
 
         userHobby.innerHTML = '';
         hobbies.forEach( hobby => {
-            createHobbyDomNode(hobby);
+            createHobbyDomNode(hobby, 'after');
         });
         // Render списка друзей
         userFriends.innerHTML = '';
@@ -137,20 +120,21 @@ class Profile {
             newFriend.innerHTML = `
                 <img src="${ friend.picture }" alt="${ friend.fullName }" src="${ friend.fullName }">
                 <div class="infoFriend">
-                    <div class="mainInfoFriend">
-                        <a href="${ friend.picture }" class="fullNameFriend">${ friend.fullName }</a>
-                        <span class="cityFriend">c. ${ friend.city }</span>
-                    </div>
-                    <span class="friendStatus">${ friend.status }</span>
+                     <div class="mainInfoFriend">
+                         <a href="${ friend.picture }" class="fullNameFriend">${ friend.fullName }</a>
+                         <span class="cityFriend">c. ${ friend.city }</span>
+                     </div>
+                     <span class="friendStatus">${ friend.status }</span>
                 </div>
             `;
             userFriends.appendChild(newFriend);
         });
-        
+
         setTimeout(() => {
             wrapper.classList.remove('filter');
-            spinner.style.display = overlay.style.display = 'none';       
+            spinner.style.display = overlay.style.display = 'none';
         }, 1000);
     }
 }
-new Profile(localStorage, URL).init();
+const profile = new Profile(localStorage, URL, currentUserAgent);
+profile.init();

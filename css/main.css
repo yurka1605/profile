@@ -114,7 +114,7 @@ header{
     height: 169px;
 }
 .hobbiesControl{
-    display: table-cell;
+    display: block;
     width: 132px;
     height: 30px;
     text-align: center;
@@ -124,6 +124,7 @@ header{
     border-radius: 6px;
     color: #ffffff;
     cursor: pointer;
+    line-height: 30px;
     vertical-align: middle;
     -webkit-transition: .5s;
     transition: .5s;
@@ -291,7 +292,7 @@ header{
 .popupAddHobby{
     z-index: 10110;
     width: 250px;
-    height: 100px;
+    height: 120px;
     position: fixed;
     background: #ffffff;
     top: -100%;
@@ -308,6 +309,8 @@ header{
     text-align: center;
 }
 .fieldEnterHobby{
+    display: block;
+    width: 100%;
     height: 30px;
     padding: 5px 10px;
     color: #0b7fb2;
@@ -316,7 +319,10 @@ header{
     font-weight: bold;
 }
 .addHobby{
-    display: inline-block!important;
+    position: absolute;
+    left: 20px;
+    bottom: 20px;
+    width: calc(100% - 40px);
     line-height: 30px;
     margin-top: 10px;
 }

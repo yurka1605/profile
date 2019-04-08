@@ -1,4 +1,6 @@
 'use strict';
+const currentUserAgent = window.navigator.userAgent.toLowerCase();
+
 const friendsUser = 21; // количестов друзей -1
 //Отсюда получаем рандомных пользователей
 const URL = 'https://api.randomuser.me/1.0/?results=' + friendsUser + '&nat=gb,us&inc=gender,name,location,email,phone,picture';

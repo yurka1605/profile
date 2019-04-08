@@ -1,10 +1,45 @@
 'use strict';
 
-var createHobbyDomNode = function createHobbyDomNode(hobby) {
+var fetcherForAll = function fetcherForAll() {
+    var request = new Request(undefined.url, {
+        method: 'GET',
+        headers: new Headers(),
+        mode: 'cors',
+        cache: 'default'
+    });
+    fetch(request).then(function (response) {
+        if (response.status === 200) return response.json();else throw new Error('Response status not 200!');
+    }).then(function (success) {
+        undefined.parseDataUsers(success.results);
+    }).catch(function (message) {
+        handlerErrorFetcher(message);
+    });
+};
+
+var fetcherForIE10 = function fetcherForIE10() {
+    try {
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', undefined.url, false);
+        xhr.send();
+        undefined.parseDataUsers(JSON.parse(xhr.responseText).results);
+    } catch (message) {
+        handlerErrorFetcher(message);
+    }
+};
+
+var handlerErrorFetcher = function handlerErrorFetcher(e) {
+    console.log(e);
+    undefined.renderDataUsers();
+    setTimeout(function () {
+        undefined.getDataUser(undefined.url);
+    }, 60000);
+};
+
+var createHobbyDomNode = function createHobbyDomNode(hobby, method) {
     var newHobby = document.createElement('div');
     newHobby.className = 'hobby';
     newHobby.innerHTML = hobby;
-    userHobby.insertBefore(newHobby, userHobby.firstChild);
+    method === 'after' ? userHobby.appendChild(newHobby) : userHobby.insertBefore(newHobby, userHobby.firstChild);
 };
 
 var getActiveTab = function getActiveTab(active) {
@@ -22,8 +57,8 @@ var getActiveTab = function getActiveTab(active) {
     sessionStorage.setItem('tabId', active);
 };
 
-var activePopup = function activePopup() {
-    var eventUser = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
+var activePopup = function activePopup(event) {
+    var eventUser = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';
 
     if (event.target.className === 'closePopup' || eventUser === 'close') {
         popupAddHobby.classList.remove('openPopup');
@@ -36,7 +71,7 @@ var activePopup = function activePopup() {
     }
 };
 
-var addHobbies = function addHobbies(inputValue) {
+var addHobbies = function addHobbies(inputValue, event) {
     var currentHobbies = JSON.parse(localStorage.getItem('hobby'));
     var countIdentical = 0;
     currentHobbies.forEach(function (element) {
@@ -45,9 +80,9 @@ var addHobbies = function addHobbies(inputValue) {
     if (countIdentical === 0) {
         currentHobbies.splice(0, 0, inputValue);
         localStorage.setItem('hobby', JSON.stringify(currentHobbies));
-        createHobbyDomNode(inputValue);
+        createHobbyDomNode(inputValue, 'before');
         fieldEnterHobby.value = '';
-        activePopup('close');
+        activePopup(event, 'close');
     } else console.log('Hobby with this name already exists');
 };
 
@@ -57,17 +92,25 @@ var deleteHobby = function deleteHobby(nameHobby) {
         if (hobbyName[i].innerHTML === nameHobby) {
             userHobby.removeChild(hobbyName[i]);
             notDeleteElem.splice(i, 1);
-        };
+        }
     }
     localStorage.setItem('hobby', JSON.stringify(notDeleteElem));
 };
 
-var changeInfo = function changeInfo(dataName) {
+var changeInfo = function changeInfo(dataName, event) {
     var arrProp = dataName.split('.');
     var elementChange = document.querySelector('.' + event.target.className);
-    elementChange.addEventListener('change', function () {
-        var currentProfileData = JSON.parse(localStorage.getItem('profile'));
-        if (arrProp.length > 1) currentProfileData['' + arrProp[0]]['' + arrProp[1]] = elementChange.value;else currentProfileData['' + arrProp[0]] = elementChange.value;
-        localStorage.setItem('profile', JSON.stringify(currentProfileData));
-    });
+    var currentProfileData = JSON.parse(localStorage.getItem('profile'));
+    if (dataName !== 'fullName') {
+        elementChange.addEventListener('change', function () {
+            if (arrProp.length > 1) currentProfileData['' + arrProp[0]]['' + arrProp[1]] = elementChange.value;else currentProfileData['' + arrProp[0]] = elementChange.value;
+            localStorage.setItem('profile', JSON.stringify(currentProfileData));
+        });
+    } else {
+        elementChange.addEventListener('input', function () {
+            currentProfileData['' + arrProp[0]] = elementChange.value;
+            imageUser.title = imageUser.alt = elementChange.value;
+            localStorage.setItem('profile', JSON.stringify(currentProfileData));
+        });
+    }
 };

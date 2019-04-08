@@ -7,14 +7,15 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 var Profile = function () {
-    function Profile(state, url) {
-        var currentTab = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 0;
+    function Profile(state, url, currentUserAgent) {
+        var currentTab = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : 0;
 
         _classCallCheck(this, Profile);
 
         this._state = state;
         this.url = url;
         this.tab = currentTab;
+        this.currentUserAgent = /msie 10/i.test(currentUserAgent);
     }
 
     _createClass(Profile, [{
@@ -22,7 +23,9 @@ var Profile = function () {
 
         // init
         value: function init() {
-            // Загрузка обновление страницы
+            var _this = this;
+
+            // Условие выбора данных для загрузки(обновления) страницы
             if (!this.userProfile[0]) {
                 this.getDataUser();
                 sessionStorage.setItem('tabId', this.tab);
@@ -30,23 +33,29 @@ var Profile = function () {
 
             // Табы
             mainNavigation.addEventListener('click', function (event) {
-                getActiveTab(event.target.dataset.tabId);
+                _this.currentUserAgent !== true ? getActiveTab(event.target.dataset.tabId) : getActiveTab(event.target.getAttribute('data-tab-id')); // for IE 10
             });
 
             // Добавление интереса
-            hobbiesControl.addEventListener('click', activePopup);
-            closePopup.addEventListener('click', activePopup);
-            addHobby.addEventListener('click', function () {
-                var inputValue = fieldEnterHobby.value.toLowerCase();
-                inputValue !== '' ? addHobbies(inputValue) : console.log('Enter name hobby');
+            hobbiesControl.addEventListener('click', function (event) {
+                return activePopup(event);
             });
-            userHobby.addEventListener('click', function () {
+            closePopup.addEventListener('click', function (event) {
+                return activePopup(event);
+            });
+            addHobby.addEventListener('click', function (event) {
+                var inputValue = fieldEnterHobby.value.toLowerCase();
+                inputValue !== '' ? addHobbies(inputValue, event) : console.log('Enter name hobby');
+            });
+            userHobby.addEventListener('click', function (event) {
                 event.target.className !== 'userHobby' ? deleteHobby(event.target.innerHTML) : false;
             });
 
-            //Изменение данных 
+            //Изменение данных профиля
             mainInfoUser.addEventListener('click', function (event) {
-                event.target.tagName === 'INPUT' ? changeInfo(event.target.dataset.nameField) : false;
+                if (event.target.tagName === 'INPUT') {
+                    _this.currentUserAgent !== true ? changeInfo(event.target.dataset.nameField, event) : changeInfo(event.target.getAttribute('data-name-field'), event); // for IE 10
+                }
             });
         }
 
@@ -55,28 +64,7 @@ var Profile = function () {
     }, {
         key: 'getDataUser',
         value: function getDataUser() {
-            var _this = this;
-
-            var headers = new Headers();
-            var initRequest = {
-                method: 'GET',
-                headers: headers,
-                mode: 'cors',
-                cache: 'default'
-            };
-            var request = new Request(this.url, initRequest);
-
-            fetch(request).then(function (response) {
-                if (response.status === 200) return response.json();else throw new Error('Response status not 200!');
-            }).then(function (success) {
-                _this.parseDataUsers(success.results);
-            }).catch(function (message) {
-                console.log('error:' + message);
-                setTimeout(function (url) {
-                    _this.getDataUser(url);
-                }, 60000);
-                _this.renderDataUsers();
-            });
+            this.currentUserAgent ? fetcherForIE10() : fetcherForAll();
         }
 
         //Parse
@@ -85,8 +73,8 @@ var Profile = function () {
         key: 'parseDataUsers',
         value: function parseDataUsers(users) {
             // первого юзера в списке беру как основного
-            var dataMainProfile = void 0,
-                hobby = void 0,
+            var dataMainProfile = {},
+                hobby = [],
                 friends = [];
 
             users.forEach(function (user, i) {
@@ -141,7 +129,7 @@ var Profile = function () {
 
             userHobby.innerHTML = '';
             hobbies.forEach(function (hobby) {
-                createHobbyDomNode(hobby);
+                createHobbyDomNode(hobby, 'after');
             });
             // Render списка друзей
             userFriends.innerHTML = '';
@@ -149,7 +137,7 @@ var Profile = function () {
                 // блок инфо о друге
                 var newFriend = document.createElement('section');
                 newFriend.className = 'friendUser';
-                newFriend.innerHTML = '\n                <img src="' + friend.picture + '" alt="' + friend.fullName + '" src="' + friend.fullName + '">\n                <div class="infoFriend">\n                    <div class="mainInfoFriend">\n                        <a href="' + friend.picture + '" class="fullNameFriend">' + friend.fullName + '</a>\n                        <span class="cityFriend">c. ' + friend.city + '</span>\n                    </div>\n                    <span class="friendStatus">' + friend.status + '</span>\n                </div>\n            ';
+                newFriend.innerHTML = '\n                <img src="' + friend.picture + '" alt="' + friend.fullName + '" src="' + friend.fullName + '">\n                <div class="infoFriend">\n                     <div class="mainInfoFriend">\n                         <a href="' + friend.picture + '" class="fullNameFriend">' + friend.fullName + '</a>\n                         <span class="cityFriend">c. ' + friend.city + '</span>\n                     </div>\n                     <span class="friendStatus">' + friend.status + '</span>\n                </div>\n            ';
                 userFriends.appendChild(newFriend);
             });
 
@@ -171,4 +159,5 @@ var Profile = function () {
     return Profile;
 }();
 
-new Profile(localStorage, URL).init();
+var profile = new Profile(localStorage, URL, currentUserAgent);
+profile.init();
