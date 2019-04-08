@@ -1,7 +1,9 @@
 'use strict';
 
 var fetcherForAll = function fetcherForAll() {
-    var request = new Request(undefined.url, {
+    var _this = this;
+
+    var request = new Request(this.url, {
         method: 'GET',
         headers: new Headers(),
         mode: 'cors',
@@ -10,28 +12,31 @@ var fetcherForAll = function fetcherForAll() {
     fetch(request).then(function (response) {
         if (response.status === 200) return response.json();else throw new Error('Response status not 200!');
     }).then(function (success) {
-        undefined.parseDataUsers(success.results);
+        _this.parseDataUsers(success.results);
     }).catch(function (message) {
-        handlerErrorFetcher(message);
+        handlerErrorFetcher.call(_this, message);
     });
 };
 
 var fetcherForIE10 = function fetcherForIE10() {
     try {
         var xhr = new XMLHttpRequest();
-        xhr.open('GET', undefined.url, false);
+        xhr.open('GET', this.url, false);
         xhr.send();
-        undefined.parseDataUsers(JSON.parse(xhr.responseText).results);
+        this.parseDataUsers(JSON.parse(xhr.responseText).results);
     } catch (message) {
-        handlerErrorFetcher(message);
+        handlerErrorFetcher.call(this, message);
     }
 };
 
 var handlerErrorFetcher = function handlerErrorFetcher(e) {
+    var _this2 = this;
+
+    console.log(this);
     console.log(e);
-    undefined.renderDataUsers();
+    this.renderDataUsers();
     setTimeout(function () {
-        undefined.getDataUser(undefined.url);
+        _this2.getDataUser(_this2.url);
     }, 60000);
 };
 

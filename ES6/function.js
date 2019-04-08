@@ -1,6 +1,6 @@
 'use strict';
 
-const fetcherForAll = () => {
+const fetcherForAll = function () {
     const request = new Request(this.url, {
         method: 'GET',
         headers: new Headers(),
@@ -16,26 +16,27 @@ const fetcherForAll = () => {
             this.parseDataUsers(success.results);
         })
         .catch( message => {
-            handlerErrorFetcher(message);
+            handlerErrorFetcher.call(this, message);
         });
 };
 
-const fetcherForIE10 = () => {
+const fetcherForIE10 = function () {
     try {
         const xhr = new XMLHttpRequest();
         xhr.open('GET', this.url, false);
         xhr.send();
         this.parseDataUsers(JSON.parse(xhr.responseText).results);
     } catch (message) {
-        handlerErrorFetcher(message);
+        handlerErrorFetcher.call(this, message);
     }
 };
 
-const handlerErrorFetcher = (e) => {
+const handlerErrorFetcher = function (e) {
+    console.log(this);
     console.log(e);
     this.renderDataUsers();
     setTimeout(() => {
-        this.getDataUser(this.url)
+        this.getDataUser(this.url);
     }, 60000);
 };
 

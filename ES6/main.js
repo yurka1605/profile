@@ -4,31 +4,30 @@ class Profile {
         this._state = state;
         this.url = url;
         this.tab = currentTab;
-        this.currentUserAgent = /msie 10/i.test(currentUserAgent);
-    }
-    set userProfile(local) {
-        state.length !== 0 ? this._state = local : false;
+        this.currentUserAgent = /msie 10/i.test(currentUserAgent) || /net/i.test(currentUserAgent);
     }
     get userProfile() {
-        return [
-            JSON.parse(this._state.getItem('profile')),
-            JSON.parse(this._state.getItem('hobby')),
-            JSON.parse(this._state.getItem('friends')),
-        ];
+        if (this._state.length !== 0) {
+            return [
+                JSON.parse(this._state.getItem('profile')),
+                JSON.parse(this._state.getItem('hobby')),
+                JSON.parse(this._state.getItem('friends')),
+            ];
+        } else return null;
     }
     // init
     init() {
         // Условие выбора данных для загрузки(обновления) страницы
-        if (!this.userProfile[0])  {
-            this.getDataUser();
+        if (this.userProfile === null) {
             sessionStorage.setItem('tabId', this.tab);
+            this.getDataUser();
         } else this.renderDataUsers(...this.userProfile);
 
         // Табы
         mainNavigation.addEventListener('click', (event) =>{
             this.currentUserAgent !== true
                 ? getActiveTab(event.target.dataset.tabId)
-                : getActiveTab(event.target.getAttribute('data-tab-id'));// for IE 10
+                : getActiveTab(event.target.getAttribute('data-tab-id'));// for IE 10 и Edge
         });
 
         // Добавление интереса
@@ -54,7 +53,7 @@ class Profile {
 
     //getData
     getDataUser() {
-        this.currentUserAgent ? fetcherForIE10() : fetcherForAll();
+        this.currentUserAgent ? fetcherForIE10.call(this) : fetcherForAll.call(this); //add context for Opera 
     }
 
     //Parse
@@ -88,7 +87,6 @@ class Profile {
                 });
             }
         });
-
         localStorage.setItem('friends', JSON.stringify(friends));
         this.renderDataUsers(dataMainProfile, hobby, friends);
     }

@@ -125,7 +125,6 @@ header{
     color: #ffffff;
     cursor: pointer;
     line-height: 30px;
-    vertical-align: middle;
     -webkit-transition: .5s;
     transition: .5s;
 }

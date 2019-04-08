@@ -15,7 +15,7 @@ var Profile = function () {
         this._state = state;
         this.url = url;
         this.tab = currentTab;
-        this.currentUserAgent = /msie 10/i.test(currentUserAgent);
+        this.currentUserAgent = /msie 10/i.test(currentUserAgent) || /net/i.test(currentUserAgent);
     }
 
     _createClass(Profile, [{
@@ -26,14 +26,14 @@ var Profile = function () {
             var _this = this;
 
             // Условие выбора данных для загрузки(обновления) страницы
-            if (!this.userProfile[0]) {
-                this.getDataUser();
+            if (this.userProfile === null) {
                 sessionStorage.setItem('tabId', this.tab);
+                this.getDataUser();
             } else this.renderDataUsers.apply(this, _toConsumableArray(this.userProfile));
 
             // Табы
             mainNavigation.addEventListener('click', function (event) {
-                _this.currentUserAgent !== true ? getActiveTab(event.target.dataset.tabId) : getActiveTab(event.target.getAttribute('data-tab-id')); // for IE 10
+                _this.currentUserAgent !== true ? getActiveTab(event.target.dataset.tabId) : getActiveTab(event.target.getAttribute('data-tab-id')); // for IE 10 и Edge
             });
 
             // Добавление интереса
@@ -64,7 +64,7 @@ var Profile = function () {
     }, {
         key: 'getDataUser',
         value: function getDataUser() {
-            this.currentUserAgent ? fetcherForIE10() : fetcherForAll();
+            this.currentUserAgent ? fetcherForIE10.call(this) : fetcherForAll.call(this); //add context for Opera 
         }
 
         //Parse
@@ -101,7 +101,6 @@ var Profile = function () {
                     });
                 }
             });
-
             localStorage.setItem('friends', JSON.stringify(friends));
             this.renderDataUsers(dataMainProfile, hobby, friends);
         }
@@ -148,11 +147,10 @@ var Profile = function () {
         }
     }, {
         key: 'userProfile',
-        set: function set(local) {
-            state.length !== 0 ? this._state = local : false;
-        },
         get: function get() {
-            return [JSON.parse(this._state.getItem('profile')), JSON.parse(this._state.getItem('hobby')), JSON.parse(this._state.getItem('friends'))];
+            if (this._state.length !== 0) {
+                return [JSON.parse(this._state.getItem('profile')), JSON.parse(this._state.getItem('hobby')), JSON.parse(this._state.getItem('friends'))];
+            } else return null;
         }
     }]);
 
