@@ -36,19 +36,24 @@ var Profile = function () {
                 _this.currentUserAgent !== true ? getActiveTab(event.target.dataset.tabId) : getActiveTab(event.target.getAttribute('data-tab-id')); // for IE 10 и Edge
             });
 
-            // Добавление интереса
+            // Активация Popup
             hobbiesControl.addEventListener('click', function (event) {
                 return activePopup(event);
             });
             closePopup.addEventListener('click', function (event) {
                 return activePopup(event);
             });
+
+            // Управление интересами
+            fieldEnterHobby.addEventListener('input', function (event) {
+                validFields(event.target, /[^A-Za-zА-Яа-я\s\-]/g, '', 'Телефон не может состоять из букв!');
+            });
             addHobby.addEventListener('click', function (event) {
                 var inputValue = fieldEnterHobby.value.toLowerCase();
-                inputValue !== '' ? addHobbies(inputValue, event) : console.log('Enter name hobby');
+                inputValue.trim() !== '' ? addHobbies(inputValue, event) : showMessage('Enter name hobby', 'danger');
             });
             userHobby.addEventListener('click', function (event) {
-                event.target.className !== 'userHobby' ? deleteHobby(event.target.innerHTML) : false;
+                if (event.target.className !== 'userHobby') deleteHobby(event.target.innerHTML);
             });
 
             //Изменение данных профиля
@@ -64,7 +69,7 @@ var Profile = function () {
     }, {
         key: 'getDataUser',
         value: function getDataUser() {
-            this.currentUserAgent ? fetcherForIE10.call(this) : fetcherForAll.call(this); //add context for Opera 
+            this.currentUserAgent ? fetcherForIE.call(this) : fetcherForAll.call(this); //add context for Opera
         }
 
         //Parse

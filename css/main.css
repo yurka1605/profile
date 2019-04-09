@@ -154,11 +154,15 @@ header{
     height: auto;
 }
 .fullNameUser{
+    width: 100%;
     border: 1px solid transparent;
     display: block;
     font-size: 22px;
     font-weight: 600;
     text-transform: capitalize;
+}
+.userLocation{
+    width: 100%;
 }
 .userLocation, .friendStatus{
     font-size: 10px;
@@ -195,7 +199,8 @@ header{
 .valueEmail{
     color: #0b7fb2;
     word-break: break-word;
-    text-transform: lowercase
+    text-transform: lowercase;
+    text-decoration: underline;
 }
 .haracteristic span, .hobbies{
     font-weight: bold;
@@ -212,6 +217,7 @@ header{
         flex-wrap: wrap;
 }
 .hobby{
+    position: relative;
     width: auto;
     border: 1px solid #d5d5d5;
     padding: 5px 10px;
@@ -228,8 +234,29 @@ header{
 .hobby:hover{
     background: #f3f3f3;
     color: #000000;
+    padding-left: 20px;
 }
-
+.hobby::before, .hobby::after{
+    content: '';
+    width: 10px;
+    height: 2px;
+    background: #0b7fb2;
+    position: absolute;
+    left: 5%;
+    top: 50%;
+    opacity: 0;
+    transition: .6s linear;
+}
+.hobby::after{
+    transform: rotate(45deg) translateY(-50%);
+}
+.hobby::before{
+    transform: rotate(-45deg) translateY(-50%);
+    margin-left: 1px;
+}
+.hobby:hover:before, .hobby:hover:after{
+    opacity: 1;
+}
 
 /* Информация о друзьях */
 
@@ -306,6 +333,9 @@ header{
     border: 2px solid #0b7fb2;
     padding: 20px;
     text-align: center;
+    -webkit-box-shadow: -2px -1px 51px -9px rgba(255,255,255,1);
+    -moz-box-shadow: -2px -1px 51px -9px rgba(255,255,255,1);
+    box-shadow: -2px -1px 51px -9px rgba(255,255,255,1);
 }
 .fieldEnterHobby{
     display: block;
@@ -424,4 +454,51 @@ header{
 @keyframes spinner {
     from {-webkit-transform: translate(-50%, -50%) rotate(0deg);transform: translate(-50%, -50%) rotate(0deg);}
     to {-webkit-transform: translate(-50%, -50%) rotate(360deg);transform: translate(-50%, -50%) rotate(360deg);}
+}
+ /* Info message */
+.infoMessage{
+    max-width: 250px;
+    padding: 5px 10px;
+    width: auto;
+    height: auto;
+    position: absolute;
+    left: 50%;
+    bottom: 29%;
+    transform: translateX(-50%);
+    opacity: 0;
+    z-index: 10100;
+    text-align: center;
+    color: #ffffff;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    -webkit-box-shadow: 0 2px 20px 4px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0 2px 20px 4px rgba(0,0,0,0.75);
+    box-shadow: 0 2px 20px 4px rgba(0,0,0,0.75);
+    transition: .5s linear;
+}
+.danger{
+    background: #a50c09;
+    opacity: 1;
+}
+.access{
+    background: #29a511;
+    opacity: 1;
+}
+
+@media (max-width: 600px) {
+    .wrapper {
+        position: static;
+        transform: translate(0, 0);
+        width: 100%;
+        height: 100vh;
+    }
+    .profileTabBlock{
+    }
+    .imageUser, .mainInfoUser{
+        justify-content: center;
+    }
+    .mainInfoUser{
+        width: 100%;
+    }
 }

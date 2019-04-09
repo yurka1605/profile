@@ -42,7 +42,7 @@ const defaultSettings = {
         email: "undefined@undefined.ru",
     },
     picture: "./assets/UserPic.png",
-}
+};
 
 //spinner
 const overlay = document.querySelector('.overlay');
@@ -59,3 +59,7 @@ const hobbyName = document.getElementsByClassName('hobby');
 // изменение информации
 
 const mainInfoUser = document.querySelector('.mainInfoUser');
+
+// Alert message
+
+const infoMessage = document.querySelector('.infoMessage');

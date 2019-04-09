@@ -43,9 +43,10 @@ var defaultSettings = {
         email: "undefined@undefined.ru"
     },
     picture: "./assets/UserPic.png"
+};
 
-    //spinner
-};var overlay = document.querySelector('.overlay');
+//spinner
+var overlay = document.querySelector('.overlay');
 var spinner = document.querySelector('.spinner');
 
 //Add hooby
@@ -59,3 +60,7 @@ var hobbyName = document.getElementsByClassName('hobby');
 // изменение информации
 
 var mainInfoUser = document.querySelector('.mainInfoUser');
+
+// Alert message
+
+var infoMessage = document.querySelector('.infoMessage');

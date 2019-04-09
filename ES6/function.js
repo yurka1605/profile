@@ -1,5 +1,5 @@
 'use strict';
-
+// func for request
 const fetcherForAll = function () {
     const request = new Request(this.url, {
         method: 'GET',
@@ -20,7 +20,7 @@ const fetcherForAll = function () {
         });
 };
 
-const fetcherForIE10 = function () {
+const fetcherForIE = function () {
     try {
         const xhr = new XMLHttpRequest();
         xhr.open('GET', this.url, false);
@@ -31,11 +31,13 @@ const fetcherForIE10 = function () {
     }
 };
 
+// При ошибке запроса выгрузка статичных данных из объекта defaultSettings
+// Запроса к серверу повторно каждую минуту
 const handlerErrorFetcher = function (e) {
-    console.log(this);
-    console.log(e);
+    showMessage(e, 'danger');
     this.renderDataUsers();
     setTimeout(() => {
+        showMessage('Не удалось получить данные', 'danger');
         this.getDataUser(this.url);
     }, 60000);
 };
@@ -86,7 +88,8 @@ const addHobbies = (inputValue, event) => {
         createHobbyDomNode(inputValue, 'before');
         fieldEnterHobby.value = '';
         activePopup(event, 'close');
-    } else console.log('Hobby with this name already exists');
+        showMessage(`${ inputValue } успешно добавлен в список ваших интересов`, 'access');
+    } else showMessage('Hobby with this name already exists', 'danger');
 };
 
 const deleteHobby = (nameHobby) => {
@@ -98,23 +101,74 @@ const deleteHobby = (nameHobby) => {
         }
     }
     localStorage.setItem('hobby', JSON.stringify(notDeleteElem));
+    showMessage(`${ nameHobby } успешно удален из списка интересов`, 'access');
 };
 
 const changeInfo = (dataName, event) => {
     const arrProp = dataName.split('.');
     const elementChange = document.querySelector(`.${ event.target.className }`);
     const currentProfileData = JSON.parse(localStorage.getItem('profile'));
-    if (dataName !== 'fullName') {
-        elementChange.addEventListener('change', () => {
-            if (arrProp.length > 1) currentProfileData[`${arrProp[0]}`][`${arrProp[1]}`] = elementChange.value;
-            else currentProfileData[`${arrProp[0]}`] = elementChange.value;
-            localStorage.setItem('profile', JSON.stringify(currentProfileData));
-        });
+
+    // Запоминает только при снятии фокуса
+    elementChange.addEventListener('change', () => {
+       localStorage.setItem('profile', JSON.stringify(currentProfileData));
+    });
+    // мониторит ввод пользователя
+    elementChange.addEventListener('input', () => {
+        if (dataName === 'fullName') {
+            currentProfileData[`${arrProp[0]}`] = validFields(
+                elementChange,
+                /[^A-Za-zА-Яа-я\s]/g,
+                dataName,
+                'Имя может состоять только из букв!'
+            );
+        } else if (dataName === 'info.phone') {
+            currentProfileData[`${arrProp[0]}`][`${arrProp[1]}`] = validFields(
+                elementChange,
+                /[^0-9\s()+]/g,
+                dataName,
+                'Телефон не может состоять из букв!'
+            );
+        } else if (dataName === 'info.email') {
+            currentProfileData[`${arrProp[0]}`][`${arrProp[1]}`] = validFields(
+                elementChange,
+                /@/g,
+                dataName,
+                'Отсутствует @!'
+            );
+        } else {
+            if (arrProp.length > 1) {
+                currentProfileData[`${arrProp[0]}`][`${arrProp[1]}`] = validFields(
+                    elementChange,
+                    /[^A-Za-zА-Яа-я]/g,
+                    dataName,
+                    'Любые сиволы кроме буквенных недопустимы!'
+                );
+            } else currentProfileData[`${ arrProp[0] }`] = validFields(
+                elementChange,
+                /[^A-Za-zА-Яа-я\s\-]/g,
+                dataName,
+                'Любые сиволы кроме буквенных недопустимы!'
+            );
+        }
+    });
+};
+// show message
+const showMessage = (message, typeMessage) => {
+    infoMessage.innerHTML = message;
+    infoMessage.classList.add(`${ typeMessage }`);
+    setTimeout( () =>{
+        infoMessage.classList.remove(`${ typeMessage }`);
+    },2000);
+};
+
+// validation fields
+const validFields = (elementChange, regexp, dataName, message) => {
+    if (dataName === 'info.email' ? regexp.test(elementChange.value) : !regexp.test(elementChange.value)) {
+        if (dataName === 'fullName') imageUser.title = imageUser.alt = elementChange.value;
+        return elementChange.value.trim();
     } else {
-        elementChange.addEventListener('input', () => {
-            currentProfileData[`${arrProp[0]}`] = elementChange.value;
-            imageUser.title = imageUser.alt = elementChange.value;
-            localStorage.setItem('profile', JSON.stringify(currentProfileData));
-        });
+        if (dataName !== 'info.email') elementChange.value = elementChange.value.replace(regexp, '');
+        showMessage(`${ message }`,'danger');
     }
 };

@@ -41,14 +41,14 @@
                     </div>
                     <div class="userContacts">
                         <div class="haracteristic">
-                            <span class="family">Семейное положение:</span>
-                            <span class="phoneNumber">Номер телефона:</span>
-                            <span class="email">E-mail:</span>
+                            <label class="family">Семейное положение:</label>
+                            <label class="phoneNumber">Номер телефона:</label>
+                            <label class="email">E-mail:</label>
                         </div>
                         <div class="valueHaracteristic">
                             <input type="text" class="valueFamily" data-name-field="info.family">
                             <input type="tel" class="valuePhoneNumber" data-name-field="info.phone">
-                            <a href="#"><input type="email" class="valueEmail" data-name-field="info.email"></a>
+                            <input type="email" class="valueEmail" data-name-field="info.email">
                         </div>
                     </div>
                     <span class="hobbies">Интересы</span>
@@ -63,9 +63,10 @@
     <section class="popupAddHobby">
         <div class="closePopup"></div>
         <input type="text" class="fieldEnterHobby" value="" placeholder="Enter you hobby">
-        <div class="hobbiesControl addHobby" type="button">Добавить интерес</div>
+        <div class="hobbiesControl addHobby">Добавить интерес</div>
     </section>
     <section class="overlay"></section>
-    <section class="spinner"></section>
+    <div class="spinner"></div>
+    <div class="infoMessage"></div>
 </body>
 </html>
