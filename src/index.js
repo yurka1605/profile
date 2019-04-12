@@ -1,4 +1,37 @@
 'use strict';
+import { 
+    fetcherForAll,
+    fetcherForIE,
+    createHobbyDomNode,
+    getActiveTab,
+    activePopup, 
+    addHobbies, 
+    deleteHobby, 
+    changeInfo, 
+    showMessage, 
+    validFields 
+} from "./module.functions";
+import { currentUserAgent,
+    URL,
+    wrapper,
+    mainNavigation,
+    imageUser,
+    fullNameUser,
+    cityUser,
+    familyUser,
+    phoneNumber,
+    emailUser,
+    userHobby,
+    userFriends,
+    defaultSettings,
+    overlay,
+    spinner,
+    hobbiesControl,
+    closePopup,
+    addHobby,
+    fieldEnterHobby,
+    mainInfoUser 
+} from "./module.vars";
 class Profile {
     constructor(state, url, currentUserAgent, currentTab = 0) {
         this._state = state;

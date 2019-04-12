@@ -1,66 +1,65 @@
 'use strict';
+const currentUserAgent = window.navigator.userAgent.toLowerCase();
 
-var currentUserAgent = window.navigator.userAgent.toLowerCase();
-
-var friendsUser = 21; // количестов друзей -1
+const friendsUser = 21; // количестов друзей -1
 //Отсюда получаем рандомных пользователей
-var URL = 'https://api.randomuser.me/1.0/?results=' + friendsUser + '&nat=gb,us&inc=gender,name,location,email,phone,picture';
+const URL = 'https://api.randomuser.me/1.0/?results=' + friendsUser + '&nat=gb,us&inc=gender,name,location,email,phone,picture';
 
 // DOM Node
 //main
-var wrapper = document.querySelector('.wrapper');
+const wrapper = document.querySelector('.wrapper');
 
 // Tabs
-var mainNavigation = document.querySelector('#mainNavigation');
-var mainTab = document.querySelectorAll('.mainTab');
+const mainNavigation = document.querySelector('#mainNavigation');
+const mainTab = document.querySelectorAll('.mainTab');
 
 // tabBlock
 
-var tabBlock = document.querySelectorAll('.profileTabBlock');
+const tabBlock = document.querySelectorAll('.profileTabBlock');
 
 // templates
-var imageUser = document.querySelector('.imageUser img'); //avatar
-var fullNameUser = document.querySelector('.fullNameUser'); // name
-var cityUser = document.querySelector('#mainInfo .userLocation'); // city
+const imageUser = document.querySelector('.imageUser img'); //avatar
+const fullNameUser = document.querySelector('.fullNameUser'); // name
+const cityUser = document.querySelector('#mainInfo .userLocation'); // city
 
 //info about user
-var familyUser = document.querySelector('.valueHaracteristic .valueFamily');
-var phoneNumber = document.querySelector('.valueHaracteristic .valuePhoneNumber');
-var emailUser = document.querySelector('.valueHaracteristic .valueEmail');
-var userHobby = document.querySelector('.userHobby');
+const familyUser = document.querySelector('.valueHaracteristic .valueFamily');
+const phoneNumber = document.querySelector('.valueHaracteristic .valuePhoneNumber');
+const emailUser = document.querySelector('.valueHaracteristic .valueEmail');
+const userHobby = document.querySelector('.userHobby');
 
 // Friends
-var userFriends = document.querySelector('.friendsUser');
+const userFriends = document.querySelector('.friendsUser');
 
 //default user settings 
-var defaultSettings = {
+const defaultSettings = {
     city: "undefined",
     fullName: "ubdefined undefined",
     hobby: [],
     info: {
         family: "undefined",
         phone: "+7 (***) *** ** **",
-        email: "undefined@undefined.ru"
+        email: "undefined@undefined.ru",
     },
-    picture: "./assets/UserPic.png"
+    picture: "./assets/UserPic.png",
 };
 
 //spinner
-var overlay = document.querySelector('.overlay');
-var spinner = document.querySelector('.spinner');
+const overlay = document.querySelector('.overlay');
+const spinner = document.querySelector('.spinner');
 
 //Add hooby
-var hobbiesControl = document.querySelector('.hobbiesControl');
-var popupAddHobby = document.querySelector('.popupAddHobby');
-var closePopup = document.querySelector('.closePopup');
-var addHobby = document.querySelector('.addHobby');
-var fieldEnterHobby = document.querySelector('.fieldEnterHobby');
-var hobbyName = document.getElementsByClassName('hobby');
+const hobbiesControl = document.querySelector('.hobbiesControl');
+const popupAddHobby = document.querySelector('.popupAddHobby');
+const closePopup = document.querySelector('.closePopup');
+const addHobby = document.querySelector('.addHobby');
+const fieldEnterHobby = document.querySelector('.fieldEnterHobby');
+const hobbyName = document.getElementsByClassName('hobby');
 
 // изменение информации
 
-var mainInfoUser = document.querySelector('.mainInfoUser');
+const mainInfoUser = document.querySelector('.mainInfoUser');
 
 // Alert message
 
-var infoMessage = document.querySelector('.infoMessage');
+const infoMessage = document.querySelector('.infoMessage');

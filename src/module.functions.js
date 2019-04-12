@@ -1,6 +1,9 @@
 'use strict';
+import { wrapper, mainTab, tabBlock, imageUser, popupAddHobby,
+    hobbyName, userHobby, overlay, fieldEnterHobby, infoMessage } from "./module.vars";
+
 // func for request
-const fetcherForAll = function () {
+export const fetcherForAll = function () {
     const request = new Request(this.url, {
         method: 'GET',
         headers: new Headers(),
@@ -20,7 +23,7 @@ const fetcherForAll = function () {
         });
 };
 
-const fetcherForIE = function () {
+export const fetcherForIE = function () {
     try {
         const xhr = new XMLHttpRequest();
         xhr.open('GET', this.url, false);
@@ -33,7 +36,7 @@ const fetcherForIE = function () {
 
 // При ошибке запроса выгрузка статичных данных из объекта defaultSettings
 // Запроса к серверу повторно каждую минуту
-const handlerErrorFetcher = function (e) {
+export const handlerErrorFetcher = function (e) {
     showMessage(e, 'danger');
     this.renderDataUsers();
     setTimeout(() => {
@@ -42,14 +45,14 @@ const handlerErrorFetcher = function (e) {
     }, 60000);
 };
 
-const createHobbyDomNode = (hobby, method) =>{
+export const createHobbyDomNode = (hobby, method) =>{
     let newHobby = document.createElement('div');
     newHobby.className = 'hobby';
     newHobby.innerHTML = hobby;
     method === 'after' ? userHobby.appendChild(newHobby) : userHobby.insertBefore(newHobby, userHobby.firstChild);
 };
 
-const getActiveTab = (active) => {
+export const getActiveTab = (active) => {
     if(active === '0') {
         mainTab[0].classList.remove('currentTab');
         mainTab[1].classList.add('currentTab');
@@ -64,7 +67,7 @@ const getActiveTab = (active) => {
     sessionStorage.setItem('tabId', active);
 };
 
-const activePopup = (event, eventUser = '') => {
+export const activePopup = (event, eventUser = '') => {
     if(event.target.className === 'closePopup' || eventUser === 'close') {
         popupAddHobby.classList.remove('openPopup');
         wrapper.classList.remove('filter');
@@ -76,7 +79,7 @@ const activePopup = (event, eventUser = '') => {
     }
 };
 
-const addHobbies = (inputValue, event) => {
+export const addHobbies = (inputValue, event) => {
     let currentHobbies = JSON.parse(localStorage.getItem('hobby'));
     let countIdentical = 0;
     currentHobbies.forEach(element => {
@@ -92,7 +95,7 @@ const addHobbies = (inputValue, event) => {
     } else showMessage('Hobby with this name already exists', 'danger');
 };
 
-const deleteHobby = (nameHobby) => {
+export const deleteHobby = (nameHobby) => {
     let notDeleteElem = JSON.parse(localStorage.getItem('hobby'));
     for (let i = 0; i < hobbyName.length; i++) {
         if (hobbyName[i].innerHTML === nameHobby) {
@@ -104,7 +107,7 @@ const deleteHobby = (nameHobby) => {
     showMessage(`${ nameHobby } успешно удален из списка интересов`, 'access');
 };
 
-const changeInfo = (dataName, event) => {
+export const changeInfo = (dataName, event) => {
     const arrProp = dataName.split('.');
     const elementChange = document.querySelector(`.${ event.target.className }`);
     const currentProfileData = JSON.parse(localStorage.getItem('profile'));
@@ -154,7 +157,7 @@ const changeInfo = (dataName, event) => {
     });
 };
 // show message
-const showMessage = (message, typeMessage) => {
+export const showMessage = (message, typeMessage) => {
     infoMessage.innerHTML = message;
     infoMessage.classList.add(`${ typeMessage }`);
     setTimeout( () =>{
@@ -163,7 +166,7 @@ const showMessage = (message, typeMessage) => {
 };
 
 // validation fields
-const validFields = (elementChange, regexp, dataName, message) => {
+export const validFields = (elementChange, regexp, dataName, message) => {
     if (dataName === 'info.email' ? regexp.test(elementChange.value) : !regexp.test(elementChange.value)) {
         if (dataName === 'fullName') imageUser.title = imageUser.alt = elementChange.value;
         return elementChange.value.trim();
