@@ -90,3 +90,14 @@
     background: #29a511;
     opacity: 1;
 }
+
+/* Scroll */
+
+.scrollFriend{
+    width: 8px;
+    height: 250px;
+    position: fixed;
+    right: 75px;
+    background-color: darkgray;
+    border-radius: 10px;
+}

@@ -1,4 +1,5 @@
 'use strict';
+import './css/main.css';
 import { 
     fetcherForAll,
     fetcherForIE,
@@ -10,7 +11,7 @@ import {
     changeInfo, 
     showMessage, 
     validFields 
-} from "./module.functions";
+} from './js/module.functions';
 import { currentUserAgent,
     URL,
     wrapper,
@@ -31,7 +32,8 @@ import { currentUserAgent,
     addHobby,
     fieldEnterHobby,
     mainInfoUser 
-} from "./module.vars";
+} from './js/module.vars';
+import { customScroll } from './js/module.scroll';
 class Profile {
     constructor(state, url, currentUserAgent, currentTab = 0) {
         this._state = state;
@@ -150,10 +152,10 @@ class Profile {
             createHobbyDomNode(hobby, 'after');
         });
         // Render списка друзей
-        userFriends.innerHTML = '';
+        // userFriends.innerHTML = '';
         friends.forEach( friend => {
             // блок инфо о друге
-            let newFriend = document.createElement('section');
+            let newFriend = document.createElement('div');
             newFriend.className = 'friendUser';
             newFriend.innerHTML = `
                 <img src="${ friend.picture }" alt="${ friend.fullName }" src="${ friend.fullName }">
@@ -176,3 +178,5 @@ class Profile {
 }
 const profile = new Profile(localStorage, URL, currentUserAgent);
 profile.init();
+
+customScroll();

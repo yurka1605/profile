@@ -1,0 +1,417 @@
+/* Отображдение информации о профиле */
+
+#bodyProfile{
+    width: 100%;
+    height: calc(100% - 32px);
+    position: relative;
+    background: #ffffff;
+    border-radius: 6px;
+    border-top-left-radius: 0;
+    padding: 15px;
+    margin-top: -1px;
+}
+.profileTabBlock{
+    width: calc(100% - 32px);
+    position: absolute;
+    height: calc(100% - 32px);
+}
+
+/* Блок информации о профиле */
+
+.myProfile{
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+}
+.imageUser{
+    width: 147px;
+    height: auto;
+    padding-right: 15px;
+    padding-bottom: 6px;
+}
+.imageUser > img{
+    width: 132px;
+    height: 169px;
+}
+.hobbiesControl{
+    display: block;
+    width: 132px;
+    height: 30px;
+    text-align: center;
+    background: rgb(230,103,0);
+    background: -webkit-gradient(linear, left bottom, left top, color-stop(41%, rgba(230,103,0,1)), color-stop(56%, rgba(230,127,0,1)));
+    background: linear-gradient(0deg, rgba(230,103,0,1) 41%, rgba(230,127,0,1) 56%);
+    border-radius: 6px;
+    color: #ffffff;
+    cursor: pointer;
+    line-height: 30px;
+    -webkit-transition: .5s;
+    transition: .5s;
+}
+#addFriend:hover{
+    background: rgb(230,127,0);
+    background: -webkit-gradient(linear, left bottom, left top, color-stop(41%, rgba(230,127,0,1)), color-stop(56%, rgba(230,103,0,1)));
+    background: linear-gradient(0deg, rgba(230,127,0,1) 41%, rgba(230,103,0,1) 56%);
+}
+.mainInfoUser{
+    width: calc(100% - 147px);
+    height: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: flex-start;
+}
+.mainInfoUser input:focus{
+    border-color: #0b7fb2!important;
+}
+#mainInfo{
+    height: auto;
+}
+.fullNameUser{
+    width: 100%;
+    border: 1px solid transparent;
+    display: block;
+    font-size: 22px;
+    font-weight: 600;
+    text-transform: capitalize;
+}
+.userLocation{
+    width: 100%;
+    border: 1px solid transparent;
+}
+.userLocation, .friendStatus{
+    font-size: 10px;
+    text-transform: capitalize;
+    color: #99bf96;
+}
+.userContacts{
+    height: auto;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    padding: 20px 0;
+}
+.haracteristic, .valueHaracteristic{
+    width: auto;
+    height: 70px;
+}
+.family, .phoneNumber, .email{
+    display: block;
+    width: 140px;
+    height: 23px;
+    line-height: 23px;
+}
+.valuePhoneNumber, .valueFamily, .valueEmail{
+    display: block;
+    height: 23px;
+    border: 1px solid transparent;
+    max-width: 168px;
+    padding: 0 5px;
+}
+.valueEmail{
+    color: #0b7fb2;
+    word-break: break-word;
+    text-transform: lowercase;
+    text-decoration: underline;
+}
+.haracteristic span, .hobbies{
+    font-weight: bold;
+}
+.userHobby{
+    height: auto;
+    max-height: 90px;
+    overflow: auto;
+    margin-top: 6px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+}
+.hobby{
+    position: relative;
+    width: auto;
+    border: 1px solid #d5d5d5;
+    padding: 5px 10px;
+    margin-right: 5px;
+    margin-bottom: 5px;
+    color: #3487ba;
+    cursor: pointer;
+    -webkit-transition: .5s;
+    transition: .5s;
+    text-transform: capitalize;
+    word-break: break-word;
+}
+.hobby:hover{
+    background: #f3f3f3;
+    color: #000000;
+    padding-left: 20px;
+}
+.hobby::before, .hobby::after{
+    content: '';
+    width: 10px;
+    height: 2px;
+    background: #0b7fb2;
+    position: absolute;
+    left: 5%;
+    top: 50%;
+    opacity: 0;
+    -webkit-transition: .6s linear;
+    transition: .6s linear;
+}
+.hobby::after{
+    -webkit-transform: rotate(45deg) translateY(-50%);
+            transform: rotate(45deg) translateY(-50%);
+}
+.hobby::before{
+    -webkit-transform: rotate(-45deg) translateY(-50%);
+            transform: rotate(-45deg) translateY(-50%);
+    margin-left: 1px;
+}
+.hobby:hover:before, .hobby:hover:after{
+    opacity: 1;
+}
+
+/* Информация о друзьях */
+
+.friendsUser{
+    display: none;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    overflow: auto;
+}
+.friendUser{
+    position: relative;
+    width: 219px;
+    height: 80px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: nowrap;
+        flex-wrap: nowrap;
+}
+.friendUser > img {
+    width: 60px;
+    height: 60px;
+    margin: 10px 0;
+    
+}
+.infoFriend{
+    width: calc(100% - 60px);
+    height: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    padding: 10px;
+}
+.mainInfoFriend{
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start;
+}
+.cityFriend{
+    font-size: 10px;
+    text-transform: capitalize;
+}
+/* popup */
+.popupAddHobby{
+    z-index: 10110;
+    width: 250px;
+    height: 120px;
+    position: fixed;
+    background: #ffffff;
+    top: -100%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+    display: -webkit-box;
+    display: -ms-flexbox;
+    -webkit-transition: all linear 0.4s;
+    transition: all linear 0.4s;
+    border-radius: 10px;
+    border: 2px solid #0b7fb2;
+    padding: 20px;
+    text-align: center;
+    -webkit-box-shadow: -2px -1px 51px -9px rgba(255,255,255,1);
+    box-shadow: -2px -1px 51px -9px rgba(255,255,255,1);
+}
+.fieldEnterHobby{
+    display: block;
+    width: 100%;
+    height: 30px;
+    padding: 5px 10px;
+    color: #0b7fb2;
+    border: 1px solid #0b7fb2;
+    border-radius: 6px;
+    font-weight: bold;
+}
+.addHobby{
+    position: absolute;
+    left: 20px;
+    bottom: 20px;
+    width: calc(100% - 40px);
+    line-height: 30px;
+    margin-top: 10px;
+}
+.openPopup{
+    top: 50%;
+}
+.closePopup{
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    top: 0;
+    right: 0;
+    margin-top: -15px;
+    margin-right: -15px;
+    border-radius: 50%;
+    background: #0b7fb2;
+    cursor: pointer;
+    border: 1px solid #ffffff;
+}
+.closePopup:hover{
+    background: #ffffff;
+    border-color: #0b7fb2;
+}
+.closePopup:hover:after, .closePopup:hover:before{
+    background: #0b7fb2;
+}
+.closePopup::before, .closePopup::after{
+    content: '';
+    height: 2px;
+    width: 20px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%) rotate(-45deg);
+            transform: translate(-50%, -50%) rotate(-45deg);
+    background: #ffffff;
+}
+.closePopup::before{
+    -webkit-transform: translate(-50%, -50%) rotate(45deg);
+            transform: translate(-50%, -50%) rotate(45deg);
+}
+/* Стилизация скролла */
+    
+::-webkit-scrollbar-track { 
+    background-color:#ededed;
+    border-radius: 7px;
+} 
+    
+::-webkit-scrollbar-thumb { 
+    border-radius: 7px;
+    background-color:#107bb1; 
+} 
+    
+::-webkit-scrollbar{ 
+    width: 7px;
+    height: 7px;
+}
+
+/* filter */
+
+.filter{
+    -webkit-filter: blur(10px);
+            filter: blur(10px);
+}
+
+/*spinner*/
+.overlay{
+    z-index: 1;
+    width: 100%;
+    height: 100vh;
+    background: #000000;
+    opacity: 0.7;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+}
+.spinner{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+    -webkit-transform-origin: center;
+            transform-origin: center;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    border: 8px solid #ffffff;
+    border-top: 8px solid #4a76a8;
+    z-index: 10100;
+    display: block;
+    -webkit-animation: spinner 1.5s linear infinite;
+            animation: spinner 1.5s linear infinite;
+}
+@-webkit-keyframes spinner {
+    from {-webkit-transform: translate(-50%, -50%) rotate(0deg);transform: translate(-50%, -50%) rotate(0deg);}
+    to {-webkit-transform: translate(-50%, -50%) rotate(360deg);transform: translate(-50%, -50%) rotate(360deg);}
+}
+@keyframes spinner {
+    from {-webkit-transform: translate(-50%, -50%) rotate(0deg);transform: translate(-50%, -50%) rotate(0deg);}
+    to {-webkit-transform: translate(-50%, -50%) rotate(360deg);transform: translate(-50%, -50%) rotate(360deg);}
+}
+ /* Info message */
+.infoMessage{
+    max-width: 250px;
+    padding: 5px 10px;
+    width: auto;
+    height: auto;
+    position: absolute;
+    left: 50%;
+    bottom: 29%;
+    -webkit-transform: translateX(-50%);
+            transform: translateX(-50%);
+    opacity: 0;
+    z-index: 10100;
+    text-align: center;
+    color: #ffffff;
+    border-radius: 10px;
+    -webkit-box-shadow: 0 2px 20px 4px rgba(0,0,0,0.75);
+    box-shadow: 0 2px 20px 4px rgba(0,0,0,0.75);
+    -webkit-transition: .5s linear;
+    transition: .5s linear;
+    word-wrap: break-word;
+}
+.danger{
+    background: #a50c09;
+    opacity: 1;
+}
+.access{
+    background: #29a511;
+    opacity: 1;
+}
+
+/* Scroll */
+
+.scrollFriend{
+    width: 8px;
+    height: 250px;
+    position: fixed;
+    right: 75px;
+    background-color: darkgray;
+    border-radius: 10px;
+}
+*{margin:0;padding:0;-webkit-box-sizing:border-box;box-sizing:border-box;font-family:Times New Roman,Times,serif;font-weight:400;font-size:14px}body{background:#e2e2e2}button,input{outline:none;-webkit-appearance:none;-moz-appearance:none;appearance:none;-webkit-transition:.5s;-o-transition:.5s;transition:.5s}input{overflow:hidden;-o-text-overflow:ellipsis;text-overflow:ellipsis}a{color:#5399c4;font-weight:700;text-transform:capitalize}.wrapper{width:588px;height:418px;position:absolute;top:50%;left:50%;-webkit-transform:translate(-50%,-50%);-ms-transform:translate(-50%,-50%);transform:translate(-50%,-50%);padding:46px 59px 62px 42px}header{height:32px;width:100%}#mainNavigation{width:270px;height:100%;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:justify;-ms-flex-pack:justify;justify-content:space-between}.mainTab{height:32px;text-align:center;color:#000;background:#fff;border:0;font-size:16px;cursor:pointer;border-top-left-radius:6px;border-top-right-radius:6px}.currentTab{background:#0b7fb2;color:#fff}.currentTab:hover{background:#2591be}.tabProfile{width:92px}.tabFriend{width:169px}@media (max-width:600px){.wrapper{position:static;-webkit-transform:translate(0);-ms-transform:translate(0);transform:translate(0);width:100%;height:100vh;padding:5px}.profileTabBlock{-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column}#mainInfo{width:100%}.fullNameUser,.userLocation{text-align:center;width:100%}.userLocation{font-size:12px}#mainInfo,.imageUser,.mainInfoUser{margin:0 auto}.friendsUser{-webkit-box-orient:horizontal;-webkit-box-direction:normal;-ms-flex-direction:row;flex-direction:row}.valueHaracteristic{width:auto}.valueEmail,.valueFamily,.valuePhoneNumber{width:100%;max-width:100%}.mainInfoUser{width:100%}.userHobby{margin:0 10px;width:100%;display:-webkit-box;display:-ms-flexbox;display:flex;-ms-flex-pack:distribute;justify-content:space-around}.hobbies{font-size:16px;width:auto;margin:0 auto;padding-bottom:10px}.userContacts{-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center}}@media (max-width:400px){.haracteristic{width:100px}.haracteristic,.valueHaracteristic{height:100px;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column;-ms-flex-pack:distribute;justify-content:space-around}.email,.family,.phoneNumber{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center;line-height:.9;width:100%}.userContacts{padding:10px 0}}
