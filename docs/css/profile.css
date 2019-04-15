@@ -1,0 +1,179 @@
+/* Отображдение информации о профиле */
+
+#bodyProfile{
+    width: 100%;
+    height: calc(100% - 32px);
+    position: relative;
+    background: #ffffff;
+    border-radius: 6px;
+    border-top-left-radius: 0;
+    padding: 15px;
+    margin-top: -1px;
+}
+.profileTabBlock{
+    width: calc(100% - 32px);
+    position: absolute;
+    height: calc(100% - 32px);
+}
+
+/* Блок информации о профиле */
+
+.myProfile{
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+}
+.imageUser{
+    width: 147px;
+    height: auto;
+    padding-right: 15px;
+    padding-bottom: 6px;
+}
+.imageUser > img{
+    width: 132px;
+    height: 169px;
+}
+.hobbiesControl{
+    display: block;
+    width: 132px;
+    height: 30px;
+    text-align: center;
+    background: rgb(230,103,0);
+    background: -webkit-gradient(linear, left bottom, left top, color-stop(41%, rgba(230,103,0,1)), color-stop(56%, rgba(230,127,0,1)));
+    background: linear-gradient(0deg, rgba(230,103,0,1) 41%, rgba(230,127,0,1) 56%);
+    border-radius: 6px;
+    color: #ffffff;
+    cursor: pointer;
+    line-height: 30px;
+    -webkit-transition: .5s;
+    transition: .5s;
+}
+#addFriend:hover{
+    background: rgb(230,127,0);
+    background: -webkit-gradient(linear, left bottom, left top, color-stop(41%, rgba(230,127,0,1)), color-stop(56%, rgba(230,103,0,1)));
+    background: linear-gradient(0deg, rgba(230,127,0,1) 41%, rgba(230,103,0,1) 56%);
+}
+.mainInfoUser{
+    width: calc(100% - 147px);
+    height: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: flex-start;
+}
+.mainInfoUser input:focus{
+    border-color: #0b7fb2!important;
+}
+#mainInfo{
+    height: auto;
+}
+.fullNameUser{
+    width: 100%;
+    border: 1px solid transparent;
+    display: block;
+    font-size: 22px;
+    font-weight: 600;
+    text-transform: capitalize;
+}
+.userLocation{
+    width: 100%;
+    border: 1px solid transparent;
+}
+.userLocation, .friendStatus{
+    font-size: 10px;
+    text-transform: capitalize;
+    color: #99bf96;
+}
+.userContacts{
+    height: auto;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    padding: 20px 0;
+}
+.haracteristic, .valueHaracteristic{
+    width: auto;
+    height: 70px;
+}
+.family, .phoneNumber, .email{
+    display: block;
+    width: 140px;
+    height: 23px;
+    line-height: 23px;
+}
+.valuePhoneNumber, .valueFamily, .valueEmail{
+    display: block;
+    height: 23px;
+    border: 1px solid transparent;
+    max-width: 168px;
+    padding: 0 5px;
+}
+.valueEmail{
+    color: #0b7fb2;
+    word-break: break-word;
+    text-transform: lowercase;
+    text-decoration: underline;
+}
+.haracteristic span, .hobbies{
+    font-weight: bold;
+}
+.userHobby{
+    height: auto;
+    max-height: 90px;
+    overflow: auto;
+    margin-top: 6px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+}
+.hobby{
+    position: relative;
+    width: auto;
+    border: 1px solid #d5d5d5;
+    padding: 5px 10px;
+    margin-right: 5px;
+    margin-bottom: 5px;
+    color: #3487ba;
+    cursor: pointer;
+    -webkit-transition: .5s;
+    transition: .5s;
+    text-transform: capitalize;
+    word-break: break-word;
+}
+.hobby:hover{
+    background: #f3f3f3;
+    color: #000000;
+    padding-left: 20px;
+}
+.hobby::before, .hobby::after{
+    content: '';
+    width: 10px;
+    height: 2px;
+    background: #0b7fb2;
+    position: absolute;
+    left: 5%;
+    top: 50%;
+    opacity: 0;
+    -webkit-transition: .6s linear;
+    transition: .6s linear;
+}
+.hobby::after{
+    -webkit-transform: rotate(45deg) translateY(-50%);
+            transform: rotate(45deg) translateY(-50%);
+}
+.hobby::before{
+    -webkit-transform: rotate(-45deg) translateY(-50%);
+            transform: rotate(-45deg) translateY(-50%);
+    margin-left: 1px;
+}
+.hobby:hover:before, .hobby:hover:after{
+    opacity: 1;
+}
