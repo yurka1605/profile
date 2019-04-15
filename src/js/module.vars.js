@@ -30,6 +30,8 @@ export const userHobby = document.querySelector('.userHobby');
 
 // Friends
 export const userFriends = document.querySelector('.friendsUser');
+export const buttonScroll = document.querySelector('.buttonScroll');
+export const scrollTrack = document.querySelector('.scrollFriend');
 
 //default user settings 
 export const defaultSettings = {

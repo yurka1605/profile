@@ -94,10 +94,16 @@
 /* Scroll */
 
 .scrollFriend{
-    width: 8px;
-    height: 250px;
+    margin-top: -5px;
+    width: 16px;
     position: fixed;
-    right: 75px;
-    background-color: darkgray;
+    right: 70px;
+    background-color: #ededed;
     border-radius: 10px;
+}
+.buttonScroll{
+    position: relative;
+    width: 16px;
+    border-radius: 10px;
+    background: #107bb1;
 }
