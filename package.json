@@ -8,7 +8,7 @@
   "keywords": [],
   "license": "ISC",
   "scripts": {
-    "dev": "webpack-dev-server webpack -w --config build/webpack.develop.config.js",
+    "dev": "webpack-dev-server --config build/webpack.develop.config.js",
     "prod": "webpack --config build/webpack.production.config.js",
     "start": "webpack-dev-server"
   },
