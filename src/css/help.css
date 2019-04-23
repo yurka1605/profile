@@ -17,9 +17,8 @@
 
 /* filter */
 
-.filter{
-    -webkit-filter: blur(10px);
-            filter: blur(10px);
+.wrapper-filter{
+    filter: blur(10px);
 }
 
 /*spinner*/
@@ -38,10 +37,8 @@
     position: fixed;
     top: 50%;
     left: 50%;
-    -webkit-transform: translate(-50%, -50%);
-            transform: translate(-50%, -50%);
-    -webkit-transform-origin: center;
-            transform-origin: center;
+    transform: translate(-50%, -50%);
+    transform-origin: center;
     width: 70px;
     height: 70px;
     border-radius: 50%;
@@ -49,16 +46,15 @@
     border-top: 8px solid #4a76a8;
     z-index: 10100;
     display: block;
-    -webkit-animation: spinner 1.5s linear infinite;
-            animation: spinner 1.5s linear infinite;
+    animation: spinner 1.5s linear infinite;
 }
 @-webkit-keyframes spinner {
-    from {-webkit-transform: translate(-50%, -50%) rotate(0deg);transform: translate(-50%, -50%) rotate(0deg);}
-    to {-webkit-transform: translate(-50%, -50%) rotate(360deg);transform: translate(-50%, -50%) rotate(360deg);}
+    from {transform: translate(-50%, -50%) rotate(0deg);}
+    to {transform: translate(-50%, -50%) rotate(360deg);}
 }
 @keyframes spinner {
-    from {-webkit-transform: translate(-50%, -50%) rotate(0deg);transform: translate(-50%, -50%) rotate(0deg);}
-    to {-webkit-transform: translate(-50%, -50%) rotate(360deg);transform: translate(-50%, -50%) rotate(360deg);}
+    from {transform: translate(-50%, -50%) rotate(0deg);}
+    to {transform: translate(-50%, -50%) rotate(360deg);}
 }
  /* Info message */
 .infoMessage{
@@ -69,16 +65,13 @@
     position: absolute;
     left: 50%;
     bottom: 29%;
-    -webkit-transform: translateX(-50%);
-            transform: translateX(-50%);
+    transform: translateX(-50%);
     opacity: 0;
     z-index: 10100;
     text-align: center;
     color: #ffffff;
     border-radius: 10px;
-    -webkit-box-shadow: 0 2px 20px 4px rgba(0,0,0,0.75);
     box-shadow: 0 2px 20px 4px rgba(0,0,0,0.75);
-    -webkit-transition: .5s linear;
     transition: .5s linear;
     word-wrap: break-word;
 }

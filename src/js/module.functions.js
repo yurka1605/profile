@@ -54,13 +54,13 @@ export const createHobbyDomNode = (hobby, method) =>{
 
 export const getActiveTab = (active) => {
     if(active === '0') {
-        mainTab[0].classList.remove('currentTab');
-        mainTab[1].classList.add('currentTab');
+        mainTab[0].classList.remove('header__main-tab_active');
+        mainTab[1].classList.add('header__main-tab_active');
         tabBlock[0].style.display = 'flex';
         tabBlock[1].style.display = 'none';
     } else {
-        mainTab[1].classList.remove('currentTab');
-        mainTab[0].classList.add('currentTab');             
+        mainTab[1].classList.remove('header__main-tab_active');
+        mainTab[0].classList.add('header__main-tab_active');
         tabBlock[1].style.display = 'flex';
         tabBlock[0].style.display = 'none';
     }

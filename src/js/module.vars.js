@@ -10,15 +10,15 @@ export const URL = 'https://api.randomuser.me/1.0/?results=' + friendsUser + '&n
 export const wrapper = document.querySelector('.wrapper');
 
 // Tabs
-export const mainNavigation = document.querySelector('#mainNavigation');
-export const mainTab = document.querySelectorAll('.mainTab');
+export const mainNavigation = document.querySelector('.header__nav');
+export const mainTab = document.querySelectorAll('.header__main-tab');
 
 // tabBlock
 
-export const tabBlock = document.querySelectorAll('.profileTabBlock');
+export const tabBlock = document.querySelectorAll('.profile__tab-block');
 
 // templates
-export const imageUser = document.querySelector('.imageUser img'); //avatar
+export const imageUser = document.querySelector('.avatar img'); //avatar
 export const fullNameUser = document.querySelector('.fullNameUser'); // name
 export const cityUser = document.querySelector('#mainInfo .userLocation'); // city
 
@@ -29,7 +29,7 @@ export const emailUser = document.querySelector('.valueHaracteristic .valueEmail
 export const userHobby = document.querySelector('.userHobby');
 
 // Friends
-export const userFriends = document.querySelector('.friendsUser');
+export const userFriends = document.querySelector('.profile__tab-block_friends');
 
 //default user settings 
 export const defaultSettings = {
@@ -49,7 +49,7 @@ export const overlay = document.querySelector('.overlay');
 export const spinner = document.querySelector('.spinner');
 
 //Add hooby
-export const hobbiesControl = document.querySelector('.hobbiesControl');
+export const hobbiesControl = document.querySelector('.avatar__button-add-hobby');
 export const popupAddHobby = document.querySelector('.popupAddHobby');
 export const closePopup = document.querySelector('.closePopup');
 export const addHobby = document.querySelector('.addHobby');

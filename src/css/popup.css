@@ -7,17 +7,13 @@
     background: #ffffff;
     top: -100%;
     left: 50%;
-    -webkit-transform: translate(-50%, -50%);
-            transform: translate(-50%, -50%);
-    display: -webkit-box;
-    display: -ms-flexbox;
-    -webkit-transition: all linear 0.4s;
+    transform: translate(-50%, -50%);
+    display: flex;
     transition: all linear 0.4s;
     border-radius: 10px;
     border: 2px solid #0b7fb2;
     padding: 20px;
     text-align: center;
-    -webkit-box-shadow: -2px -1px 51px -9px rgba(255,255,255,1);
     box-shadow: -2px -1px 51px -9px rgba(255,255,255,1);
 }
 .fieldEnterHobby{
@@ -68,11 +64,9 @@
     position: absolute;
     top: 50%;
     left: 50%;
-    -webkit-transform: translate(-50%, -50%) rotate(-45deg);
-            transform: translate(-50%, -50%) rotate(-45deg);
+    transform: translate(-50%, -50%) rotate(-45deg);
     background: #ffffff;
 }
 .closePopup::before{
-    -webkit-transform: translate(-50%, -50%) rotate(45deg);
-            transform: translate(-50%, -50%) rotate(45deg);
+    transform: translate(-50%, -50%) rotate(45deg);
 }

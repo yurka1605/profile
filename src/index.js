@@ -157,7 +157,7 @@ class Profile {
             let newFriend = document.createElement('div');
             newFriend.className = 'friendUser';
             newFriend.innerHTML = `
-                <img src="${ friend.picture }" alt="${ friend.fullName }" src="${ friend.fullName }">
+                <img src="${ friend.picture }" alt="${ friend.fullName }" title="${ friend.fullName }">
                 <div class="infoFriend">
                      <div class="mainInfoFriend">
                          <a href="${ friend.picture }" class="fullNameFriend">${ friend.fullName }</a>
@@ -170,7 +170,7 @@ class Profile {
         });
 
         setTimeout(() => {
-            wrapper.classList.remove('filter');
+            wrapper.classList.remove('wrapper-filter');
             spinner.style.display = overlay.style.display = 'none';
         }, 1000);
     }
