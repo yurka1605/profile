@@ -5,6 +5,9 @@
     -ms-flex-wrap: wrap;
         flex-wrap: wrap;
     overflow: auto;
+    scrollbar-color: #107bb1 #ededed;
+    scrollbar-width: thin;
+    scrollbar-track-color: black;
 }
 .friendUser{
     position: relative;
