@@ -1,9 +1,8 @@
 /* Информация о друзьях */
 
-.friendsUser{
+.profile__tab-block_friends{
     display: none;
-    -ms-flex-wrap: wrap;
-        flex-wrap: wrap;
+    flex-wrap: wrap;
     overflow: auto;
     scrollbar-color: #107bb1 #ededed;
     scrollbar-width: thin;
@@ -13,11 +12,8 @@
     position: relative;
     width: 219px;
     height: 80px;
-    display: -webkit-box;
-    display: -ms-flexbox;
     display: flex;
-    -ms-flex-wrap: nowrap;
-        flex-wrap: nowrap;
+    flex-wrap: nowrap;
 }
 .friendUser > img {
     width: 60px;
@@ -28,29 +24,15 @@
 .infoFriend{
     width: calc(100% - 60px);
     height: 100%;
-    display: -webkit-box;
-    display: -ms-flexbox;
     display: flex;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
-    -webkit-box-pack: justify;
-        -ms-flex-pack: justify;
-            justify-content: space-between;
+    flex-direction: column;
+    justify-content: space-between;
     padding: 10px;
 }
 .mainInfoFriend{
-    display: -webkit-box;
-    display: -ms-flexbox;
     display: flex;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
-    -webkit-box-align: start;
-        -ms-flex-align: start;
-            align-items: flex-start;
+    flex-direction: column;
+    align-items: flex-start;
 }
 .cityFriend{
     font-size: 10px;

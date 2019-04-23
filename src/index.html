@@ -13,22 +13,22 @@
     <link rel="shortcut icon" href="favicon.ico" type="image/ico">
 </head>
 <body>
-    <main class="wrapper filter">
-        <header>
-            <nav id="mainNavigation">
-                <button class="mainTab tabProfile" data-tab-id='0' type="button">
+    <main class="wrapper wrapper_filter">
+        <header class="header">
+            <nav class="header__nav">
+                <button class="header__main-tab header__main-tab_width_profile-tab" data-tab-id='0' type="button">
                     Профиль
                 </button>
-                <button class="mainTab tabFriend currentTab" data-tab-id="1" type="button">
+                <button class="header__main-tab header__main-tab_width_friends-tab header__main-tab_active" data-tab-id="1" type="button">
                     Друзья пользователя
                 </button>
             </nav>           
         </header>
-        <section id="bodyProfile">
-            <section class="myProfile profileTabBlock">
-                <section class="imageUser">
+        <section class="profile">
+            <section class="profile__tab-block profile__tab-block_user">
+                <section class="avatar">
                     <img src="" title="Avatar" alt="Avatar">
-                    <div class="hobbiesControl">Добавить интерес</div>
+                    <div class="avatar__button-add-hobby">Добавить интерес</div>
                 </section>
                 <section class="mainInfoUser">
                     <div id="mainInfo">
@@ -52,12 +52,7 @@
                     </div>
                 </section>
             </section>
-            <section class="friendsUser profileTabBlock">
-                <div class="scrollFriend">
-                    <div class="buttonScroll">
-                            
-                    </div>
-                </div>
+            <section class="profile__tab-block_friends profile__tab-block">
             </section>
         </section>
     </main>

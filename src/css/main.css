@@ -6,8 +6,7 @@
 *{
     margin: 0;
     padding: 0;
-    -webkit-box-sizing: border-box;
-            box-sizing: border-box;
+    box-sizing: border-box;
     font-family: 'Times New Roman', Times, serif;
     font-weight: normal;
     font-size: 14px;
@@ -17,10 +16,7 @@ body{
 }
 button, input{
     outline: none;
-    -webkit-appearance: none;
-       -moz-appearance: none;
-            appearance: none;
-    -webkit-transition: .5s;
+    appearance: none;
     transition: .5s;
 }
 input{
@@ -41,28 +37,23 @@ a{
     position: absolute;
     top: 50%;
     left: 50%;
-    -webkit-transform: translate(-50%, -50%);
-            transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
     padding: 46px 59px 62px 42px;
 }
 
 /* Табы переключения */
 
-header{
+.header{
     height: 32px;
     width: 100%;
 }
-#mainNavigation{
+.header__nav{
     width: 270px;
     height: 100%;
-    display: -webkit-box;
-    display: -ms-flexbox;
     display: flex;
-    -webkit-box-pack: justify;
-        -ms-flex-pack: justify;
-            justify-content: space-between;
+    justify-content: space-between;
 }
-.mainTab{
+.header__main-tab{
     height: 32px;
     text-align: center;
     color: #000000;
@@ -73,34 +64,31 @@ header{
     border-top-left-radius: 6px;
     border-top-right-radius: 6px;
 }
-.currentTab{
+.header__main-tab_width_profile-tab{
+     width: 92px;
+ }
+.header__main-tab_width_friends-tab{
+    width: 169px;
+}
+.header__main-tab_active{
     background: #0b7fb2;
     color: #ffffff;
 }
-.currentTab:hover{
+.header__main-tab_active:hover{
     background: #2591be;
 }
-.tabProfile{
-    width: 92px;
-}
-.tabFriend{
-    width: 169px;
-}
+
 
 @media (max-width: 600px) {
     .wrapper {
         position: static;
-        -webkit-transform: translate(0, 0);
-                transform: translate(0, 0);
+        transform: translate(0, 0);
         width: 100%;
         height: 100vh;
         padding: 5px;
     }
-    .profileTabBlock{
-        -webkit-box-orient: vertical;
-        -webkit-box-direction: normal;
-            -ms-flex-direction: column;
-                flex-direction: column;
+    .profile__tab-block{
+        flex-direction: column;
     }
     #mainInfo{
         width: 100%;
@@ -112,14 +100,11 @@ header{
     .userLocation{
         font-size: 12px;
     }
-    #mainInfo,.imageUser, .mainInfoUser{
+    #mainInfo,.avatar, .mainInfoUser{
         margin: 0 auto;
     }
-    .friendsUser{
-        -webkit-box-orient: horizontal;
-        -webkit-box-direction: normal;
-            -ms-flex-direction: row;
-                flex-direction: row;
+    .profile__tab-block_friends{
+        flex-direction: row;
     }
     .valueHaracteristic{
         width: auto;
@@ -134,11 +119,8 @@ header{
     .userHobby{
         margin: 0 10px;
         width: 100%;
-        display: -webkit-box;
-        display: -ms-flexbox;
         display: flex;
-        -ms-flex-pack: distribute;
-            justify-content: space-around;
+        justify-content: space-around;
     }
     .hobbies{
         font-size: 16px;
@@ -147,9 +129,7 @@ header{
         padding-bottom: 10px;
     }
     .userContacts {
-        -webkit-box-pack: center;
-            -ms-flex-pack: center;
-                justify-content: center;
+        justify-content: center;
     }
 }
 @media (max-width: 400px) {
@@ -158,23 +138,13 @@ header{
     }
     .haracteristic, .valueHaracteristic{
         height: 100px;
-        display: -webkit-box;
-        display: -ms-flexbox;
         display: flex;
-        -webkit-box-orient: vertical;
-        -webkit-box-direction: normal;
-            -ms-flex-direction: column;
-                flex-direction: column;
-        -ms-flex-pack: distribute;
-            justify-content: space-around;
+        flex-direction: column;
+        justify-content: space-around;
     }
     .family, .phoneNumber, .email {
-        display: -webkit-box;
-        display: -ms-flexbox;
         display: flex;
-        -webkit-box-align: center;
-            -ms-flex-align: center;
-                align-items: center;
+        align-items: center;
         line-height: 0.9;
         width: 100%;
     }

@@ -1,6 +1,6 @@
 /* Отображдение информации о профиле */
 
-#bodyProfile{
+.profile{
     width: 100%;
     height: calc(100% - 32px);
     position: relative;
@@ -10,7 +10,7 @@
     padding: 15px;
     margin-top: -1px;
 }
-.profileTabBlock{
+.profile__tab-block{
     width: calc(100% - 32px);
     position: absolute;
     height: calc(100% - 32px);
@@ -18,54 +18,40 @@
 
 /* Блок информации о профиле */
 
-.myProfile{
-    display: -webkit-box;
-    display: -ms-flexbox;
+.profile__tab-block_user{
     display: flex;
 }
-.imageUser{
+.avatar{
     width: 147px;
     height: auto;
     padding-right: 15px;
     padding-bottom: 6px;
 }
-.imageUser > img{
+.avatar > img{
     width: 132px;
     height: 169px;
 }
-.hobbiesControl{
+.avatar__button-add-hobby{
     display: block;
     width: 132px;
     height: 30px;
     text-align: center;
-    background: rgb(230,103,0);
-    background: -webkit-gradient(linear, left bottom, left top, color-stop(41%, rgba(230,103,0,1)), color-stop(56%, rgba(230,127,0,1)));
     background: linear-gradient(0deg, rgba(230,103,0,1) 41%, rgba(230,127,0,1) 56%);
     border-radius: 6px;
     color: #ffffff;
     cursor: pointer;
     line-height: 30px;
-    -webkit-transition: .5s;
     transition: .5s;
 }
 #addFriend:hover{
-    background: rgb(230,127,0);
-    background: -webkit-gradient(linear, left bottom, left top, color-stop(41%, rgba(230,127,0,1)), color-stop(56%, rgba(230,103,0,1)));
     background: linear-gradient(0deg, rgba(230,127,0,1) 41%, rgba(230,103,0,1) 56%);
 }
 .mainInfoUser{
     width: calc(100% - 147px);
     height: 100%;
-    display: -webkit-box;
-    display: -ms-flexbox;
     display: flex;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
-    -webkit-box-pack: start;
-        -ms-flex-pack: start;
-            justify-content: flex-start;
+    flex-direction: column;
+    justify-content: flex-start;
 }
 .mainInfoUser input:focus{
     border-color: #0b7fb2!important;
@@ -92,8 +78,6 @@
 }
 .userContacts{
     height: auto;
-    display: -webkit-box;
-    display: -ms-flexbox;
     display: flex;
     padding: 20px 0;
 }
@@ -128,11 +112,8 @@
     max-height: 90px;
     overflow: auto;
     margin-top: 6px;
-    display: -webkit-box;
-    display: -ms-flexbox;
     display: flex;
-    -ms-flex-wrap: wrap;
-        flex-wrap: wrap;
+    flex-wrap: wrap;
 }
 .hobby{
     position: relative;
@@ -143,7 +124,6 @@
     margin-bottom: 5px;
     color: #3487ba;
     cursor: pointer;
-    -webkit-transition: .5s;
     transition: .5s;
     text-transform: capitalize;
     word-break: break-word;
@@ -162,16 +142,13 @@
     left: 5%;
     top: 50%;
     opacity: 0;
-    -webkit-transition: .6s linear;
     transition: .6s linear;
 }
 .hobby::after{
-    -webkit-transform: rotate(45deg) translateY(-50%);
-            transform: rotate(45deg) translateY(-50%);
+    transform: rotate(45deg) translateY(-50%);
 }
 .hobby::before{
-    -webkit-transform: rotate(-45deg) translateY(-50%);
-            transform: rotate(-45deg) translateY(-50%);
+    transform: rotate(-45deg) translateY(-50%);
     margin-left: 1px;
 }
 .hobby:hover:before, .hobby:hover:after{
