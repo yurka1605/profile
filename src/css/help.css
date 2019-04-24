@@ -57,7 +57,7 @@
     to {transform: translate(-50%, -50%) rotate(360deg);}
 }
  /* Info message */
-.infoMessage{
+.message-info{
     max-width: 250px;
     padding: 5px 10px;
     width: auto;
@@ -67,19 +67,21 @@
     bottom: 29%;
     transform: translateX(-50%);
     opacity: 0;
-    z-index: 10100;
     text-align: center;
     color: #ffffff;
     border-radius: 10px;
     box-shadow: 0 2px 20px 4px rgba(0,0,0,0.75);
     transition: .5s linear;
     word-wrap: break-word;
+    z-index: -1;
 }
-.danger{
+.message-info_type_danger{
     background: #a50c09;
     opacity: 1;
+    z-index: 10100;
 }
-.access{
+.message-info_type_access{
     background: #29a511;
     opacity: 1;
+    z-index: 10100;
 }

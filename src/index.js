@@ -70,16 +70,16 @@ class Profile {
 
         // Управление интересами
         fieldEnterHobby.addEventListener('input', (event) => {
-            validFields(event.target, /[^A-Za-zА-Яа-я\s\-]/g,'','Телефон не может состоять из букв!');
+            validFields(event.target, /[^A-Za-zА-Яа-я0-9\s\-]/g,'','Введены недопустимые символы в названии интереса!');
         });
         addHobby.addEventListener('click', (event) => {
             let inputValue = fieldEnterHobby.value.toLowerCase();
             inputValue.trim() !== ''
                 ? addHobbies(inputValue, event)
-                : showMessage('Enter name hobby', 'danger');
+                : showMessage('Enter name hobby', 'message-info_type_danger');
         });
         userHobby.addEventListener('click', (event) => {
-            if(event.target.className !== 'userHobby') deleteHobby(event.target.innerHTML);
+            if(event.target.className !== 'user__hobbies') deleteHobby(event.target.innerHTML);
         });
 
         //Изменение данных профиля
@@ -155,15 +155,15 @@ class Profile {
         friends.forEach( friend => {
             // блок инфо о друге
             let newFriend = document.createElement('div');
-            newFriend.className = 'friendUser';
+            newFriend.className = 'friend';
             newFriend.innerHTML = `
                 <img src="${ friend.picture }" alt="${ friend.fullName }" title="${ friend.fullName }">
-                <div class="infoFriend">
-                     <div class="mainInfoFriend">
-                         <a href="${ friend.picture }" class="fullNameFriend">${ friend.fullName }</a>
-                         <span class="cityFriend">c. ${ friend.city }</span>
+                <div class="friend__info">
+                     <div class="friend__info-main">
+                         <a href="${ friend.picture }" class="friend__info-full-name">${ friend.fullName }</a>
+                         <span class="friend__info-city-name">c. ${ friend.city }</span>
                      </div>
-                     <span class="friendStatus">${ friend.status }</span>
+                     <span class="friend__info-status">${ friend.status }</span>
                 </div>
             `;
             userFriends.appendChild(newFriend);

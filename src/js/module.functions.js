@@ -37,10 +37,10 @@ export const fetcherForIE = function () {
 // При ошибке запроса выгрузка статичных данных из объекта defaultSettings
 // Запроса к серверу повторно каждую минуту
 export const handlerErrorFetcher = function (e) {
-    showMessage(e, 'danger');
+    showMessage(e, 'message-info_type_danger');
     this.renderDataUsers();
     setTimeout(() => {
-        showMessage('Не удалось получить данные', 'danger');
+        showMessage('Не удалось получить данные', 'message-info_type_danger');
         this.getDataUser(this.url);
     }, 60000);
 };
@@ -54,13 +54,13 @@ export const createHobbyDomNode = (hobby, method) =>{
 
 export const getActiveTab = (active) => {
     if(active === '0') {
-        mainTab[0].classList.remove('header__main-tab_active');
-        mainTab[1].classList.add('header__main-tab_active');
+        mainTab[0].classList.remove('header__main-tab_deactivated');
+        mainTab[1].classList.add('header__main-tab_deactivated');
         tabBlock[0].style.display = 'flex';
         tabBlock[1].style.display = 'none';
     } else {
-        mainTab[1].classList.remove('header__main-tab_active');
-        mainTab[0].classList.add('header__main-tab_active');
+        mainTab[1].classList.remove('header__main-tab_deactivated');
+        mainTab[0].classList.add('header__main-tab_deactivated');
         tabBlock[1].style.display = 'flex';
         tabBlock[0].style.display = 'none';
     }
@@ -68,13 +68,13 @@ export const getActiveTab = (active) => {
 };
 
 export const activePopup = (event, eventUser = '') => {
-    if(event.target.className === 'closePopup' || eventUser === 'close') {
-        popupAddHobby.classList.remove('openPopup');
-        wrapper.classList.remove('filter');
+    if(event.target.className === 'popup__button-close' || eventUser === 'close') {
+        popupAddHobby.classList.remove('popup_show');
+        wrapper.classList.remove('wrapper-filter');
         overlay.style.display = 'none';
     } else {
-        popupAddHobby.classList.add('openPopup');
-        wrapper.classList.add('filter');
+        popupAddHobby.classList.add('popup_show');
+        wrapper.classList.add('wrapper-filter');
         overlay.style.display = 'block';
     }
 };
@@ -91,8 +91,8 @@ export const addHobbies = (inputValue, event) => {
         createHobbyDomNode(inputValue, 'before');
         fieldEnterHobby.value = '';
         activePopup(event, 'close');
-        showMessage(`${ inputValue } успешно добавлен в список ваших интересов`, 'access');
-    } else showMessage('Hobby with this name already exists', 'danger');
+        showMessage(`${ inputValue } успешно добавлен в список ваших интересов`, 'message-info_type_access');
+    } else showMessage('Hobby with this name already exists', 'message-info_type_danger');
 };
 
 export const deleteHobby = (nameHobby) => {
@@ -104,12 +104,12 @@ export const deleteHobby = (nameHobby) => {
         }
     }
     localStorage.setItem('hobby', JSON.stringify(notDeleteElem));
-    showMessage(`${ nameHobby } успешно удален из списка интересов`, 'access');
+    showMessage(`${ nameHobby } успешно удален из списка интересов`, 'message-info_type_access');
 };
 
 export const changeInfo = (dataName, event) => {
     const arrProp = dataName.split('.');
-    const elementChange = document.querySelector(`.${ event.target.className }`);
+    const elementChange = event.target;
     const currentProfileData = JSON.parse(localStorage.getItem('profile'));
 
     // Запоминает только при снятии фокуса
@@ -172,6 +172,6 @@ export const validFields = (elementChange, regexp, dataName, message) => {
         return elementChange.value.trim();
     } else {
         if (dataName !== 'info.email') elementChange.value = elementChange.value.replace(regexp, '');
-        showMessage(`${ message }`,'danger');
+        showMessage(`${ message }`,'message-info_type_danger');
     }
 };

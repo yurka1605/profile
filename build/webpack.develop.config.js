@@ -52,11 +52,16 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
                 },
               },
             ],
+          },
+          {
+            test: /\.(eot|svg|ttf|woff|woff2)$/,
+            use: [
+              {
+                loader: 'file-loader?name=./fonts/[name].[ext]'
+              },
+            ]
           }
         ]
-    },
-    devServer: {
-        contentBase: './develop',
     },
     plugins: [
       new HtmlWebpackPlugin({

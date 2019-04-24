@@ -1,5 +1,5 @@
 /* popup */
-.popupAddHobby{
+.popup{
     z-index: 10110;
     width: 250px;
     height: 120px;
@@ -16,7 +16,14 @@
     text-align: center;
     box-shadow: -2px -1px 51px -9px rgba(255,255,255,1);
 }
-.fieldEnterHobby{
+.popup__button{
+     position: absolute;
+     left: 20px;
+     bottom: 20px;
+     width: calc(100% - 40px);
+     margin-top: 10px;
+}
+.popup__input-field-enter{
     display: block;
     width: 100%;
     height: 30px;
@@ -26,18 +33,11 @@
     border-radius: 6px;
     font-weight: bold;
 }
-.addHobby{
-    position: absolute;
-    left: 20px;
-    bottom: 20px;
-    width: calc(100% - 40px);
-    line-height: 30px;
-    margin-top: 10px;
-}
-.openPopup{
+
+.popup_show{
     top: 50%;
 }
-.closePopup{
+.popup__button-close{
     position: absolute;
     width: 40px;
     height: 40px;
@@ -50,14 +50,16 @@
     cursor: pointer;
     border: 1px solid #ffffff;
 }
-.closePopup:hover{
+.popup__button-close:hover{
     background: #ffffff;
     border-color: #0b7fb2;
 }
-.closePopup:hover:after, .closePopup:hover:before{
+.popup__button-close:hover:after,
+.popup__button-close:hover:before{
     background: #0b7fb2;
 }
-.closePopup::before, .closePopup::after{
+.popup__button-close::before,
+.popup__button-close::after{
     content: '';
     height: 2px;
     width: 20px;
@@ -67,6 +69,6 @@
     transform: translate(-50%, -50%) rotate(-45deg);
     background: #ffffff;
 }
-.closePopup::before{
+.popup__button-close::before{
     transform: translate(-50%, -50%) rotate(45deg);
 }

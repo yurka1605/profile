@@ -1,20 +1,25 @@
 @import 'profile.css';
-@import 'users.css';
+@import 'friends.css';
 @import 'popup.css';
 @import 'help.css';
+
+@font-face{
+    font-family: 'ArialMT';
+    src: url('../fonts/arialmt.ttf');
+}
 
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Times New Roman', Times, serif;
+    font-family: ﻿ArialMT, ﻿Abur, ﻿AdobeInvisFont;
     font-weight: normal;
     font-size: 14px;
 }
 body{
     background: #e2e2e2;
 }
-button, input{
+input{
     outline: none;
     appearance: none;
     transition: .5s;
@@ -22,11 +27,22 @@ button, input{
 input{
     overflow: hidden;
     text-overflow: ellipsis;
+    outline: none;
+    appearance: none;
 }
 a{
     color: #5399c4;
     font-weight: bold;
     text-transform: capitalize;
+}
+.button{
+    border: 0;
+    outline: none;
+    appearance: none;
+    display: block;
+    text-align: center;
+    cursor: pointer;
+    box-shadow: 1px 2px 4px 0px rgba(182,182,182,1);
 }
 
 /* Обертка страницы */
@@ -55,27 +71,29 @@ a{
 }
 .header__main-tab{
     height: 32px;
-    text-align: center;
     color: #000000;
     background: #ffffff;
-    border: 0;
     font-size: 16px;
-    cursor: pointer;
+    z-index: 1;
     border-top-left-radius: 6px;
     border-top-right-radius: 6px;
+    box-shadow: 0px 2px 3px -1px rgba(177,177,177,1);
+
 }
-.header__main-tab_width_profile-tab{
+.header__main-tab_type_profile-tab{
      width: 92px;
- }
-.header__main-tab_width_friends-tab{
+}
+.header__main-tab_type_friends-tab{
     width: 169px;
 }
-.header__main-tab_active{
-    background: #0b7fb2;
+.header__main-tab_deactivated{
+    background: linear-gradient(to bottom, #0883b4 56%,#1c6cad 81%);
     color: #ffffff;
+    z-index: 0;
+    box-shadow: none;
 }
-.header__main-tab_active:hover{
-    background: #2591be;
+.header__main-tab_deactivated:active{
+    background: linear-gradient(to bottom, #1c6cad 19%,#0883b4 44%);
 }
 
 
@@ -90,65 +108,61 @@ a{
     .profile__tab-block{
         flex-direction: column;
     }
-    #mainInfo{
+    .user__info{
+        height: auto;
         width: 100%;
     }
-    .fullNameUser, .userLocation{
+    .user__input_lvl_top{
         text-align: center;
-        width: 100%;
     }
-    .userLocation{
-        font-size: 12px;
-    }
-    #mainInfo,.avatar, .mainInfoUser{
+    .user__info,
+    .avatar,
+    .user{
         margin: 0 auto;
     }
     .profile__tab-block_friends{
         flex-direction: row;
     }
-    .valueHaracteristic{
-        width: auto;
-    }
-    .valuePhoneNumber, .valueFamily, .valueEmail {
+    .user__input_lvl_bottom{
         width: 100%;
         max-width: 100%;
     }
-    .mainInfoUser{
+    .user{
         width: 100%;
     }
-    .userHobby{
+    .user__hobbies{
         margin: 0 10px;
         width: 100%;
         display: flex;
         justify-content: space-around;
     }
-    .hobbies{
+    .user__span{
         font-size: 16px;
         width: auto;
         margin: 0 auto;
         padding-bottom: 10px;
     }
-    .userContacts {
+    .user__contact {
         justify-content: center;
     }
 }
 @media (max-width: 400px) {
-    .haracteristic{
+    .user__data-name{
         width: 100px;
     }
-    .haracteristic, .valueHaracteristic{
+    .user__data{
         height: 100px;
         display: flex;
         flex-direction: column;
         justify-content: space-around;
     }
-    .family, .phoneNumber, .email {
+    .user__label {
         display: flex;
         align-items: center;
         line-height: 0.9;
         width: 100%;
     }
-    .userContacts {
+    .user__contact {
         padding: 10px 0;
     }
 }

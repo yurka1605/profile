@@ -8,20 +8,19 @@
     scrollbar-width: thin;
     scrollbar-track-color: black;
 }
-.friendUser{
+.friend{
     position: relative;
     width: 219px;
     height: 80px;
     display: flex;
     flex-wrap: nowrap;
 }
-.friendUser > img {
+.friend > img {
     width: 60px;
     height: 60px;
     margin: 10px 0;
-    
 }
-.infoFriend{
+.friend__info{
     width: calc(100% - 60px);
     height: 100%;
     display: flex;
@@ -29,12 +28,21 @@
     justify-content: space-between;
     padding: 10px;
 }
-.mainInfoFriend{
+.friend__info-main{
     display: flex;
     flex-direction: column;
     align-items: flex-start;
 }
-.cityFriend{
+.friend__info-status{
     font-size: 10px;
+    color: #99bf96;
+}
+.friend__info-full-name,
+.friend__info-city-name{
+    font-size: 10px;
+    width: 100%;
     text-transform: capitalize;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }

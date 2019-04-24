@@ -13,13 +13,13 @@
     <link rel="shortcut icon" href="favicon.ico" type="image/ico">
 </head>
 <body>
-    <main class="wrapper wrapper_filter">
+    <main class="wrapper wrapper-filter">
         <header class="header">
             <nav class="header__nav">
-                <button class="header__main-tab header__main-tab_width_profile-tab" data-tab-id='0' type="button">
+                <button class="button header__main-tab header__main-tab_type_profile-tab" data-tab-id='0' type="button">
                     Профиль
                 </button>
-                <button class="header__main-tab header__main-tab_width_friends-tab header__main-tab_active" data-tab-id="1" type="button">
+                <button class="button header__main-tab header__main-tab_type_friends-tab header__main-tab_deactivated" data-tab-id="1" type="button">
                     Друзья пользователя
                 </button>
             </nav>           
@@ -27,42 +27,42 @@
         <section class="profile">
             <section class="profile__tab-block profile__tab-block_user">
                 <section class="avatar">
-                    <img src="" title="Avatar" alt="Avatar">
-                    <div class="avatar__button-add-hobby">Добавить интерес</div>
+                    <div class="avatar__img"><img src="" alt=""></div>
+                    <button class="button button-hobby avatar__button">Добавить интерес</button>
                 </section>
-                <section class="mainInfoUser">
-                    <div id="mainInfo">
-                        <input type="text" class="fullNameUser" data-name-field="fullName">
-                        <input type="text" class="userLocation" data-name-field="city">
+                <section class="user">
+                    <div class="user__info">
+                        <input type="text" class="user__input user__input_lvl_top user__full-name" data-name-field="fullName">
+                        <input type="text" class="user__input user__input_lvl_top user__location" data-name-field="city">
                     </div>
-                    <div class="userContacts">
-                        <div class="haracteristic">
-                            <label class="family">Семейное положение:</label>
-                            <label class="phoneNumber">Номер телефона:</label>
-                            <label class="email">E-mail:</label>
+                    <div class="user__contact">
+                        <div class="user__data user__data-name">
+                            <label class="user__label">Семейное положение:</label>
+                            <label class="user__label">Номер телефона:</label>
+                            <label class="user__label">E-mail:</label>
                         </div>
-                        <div class="valueHaracteristic">
-                            <input type="text" class="valueFamily" data-name-field="info.family">
-                            <input type="tel" class="valuePhoneNumber" data-name-field="info.phone">
-                            <input type="email" class="valueEmail" data-name-field="info.email">
+                        <div class="user__data">
+                            <input type="text" class="user__input user__input_lvl_bottom user__input-family" data-name-field="info.family">
+                            <input type="tel" class="user__input user__input_lvl_bottom user__input-phone-number" data-name-field="info.phone">
+                            <input type="email" class="user__input user__input_lvl_bottom user__input-email" data-name-field="info.email">
                         </div>
                     </div>
-                    <span class="hobbies">Интересы</span>
-                    <div class="userHobby">
+                    <span class="user__span">Интересы</span>
+                    <div class="user__hobbies">
                     </div>
                 </section>
             </section>
-            <section class="profile__tab-block_friends profile__tab-block">
+            <section class="profile__tab-block profile__tab-block_friends">
             </section>
         </section>
     </main>
-    <section class="popupAddHobby">
-        <div class="closePopup"></div>
-        <input type="text" class="fieldEnterHobby" value="" placeholder="Enter you hobby">
-        <div class="hobbiesControl addHobby">Добавить интерес</div>
+    <section class="popup">
+        <div class="popup__button-close"></div>
+        <input type="text" class="popup__input-field-enter" value="" placeholder="Enter you hobby">
+        <button class="button button-hobby popup__button popup__button_state_add-hobby">Добавить интерес</button>
     </section>
     <section class="overlay"></section>
     <div class="spinner"></div>
-    <div class="infoMessage"></div>
+    <div class="message-info"></div>
 </body>
 </html>

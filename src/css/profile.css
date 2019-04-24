@@ -9,10 +9,12 @@
     border-top-left-radius: 0;
     padding: 15px;
     margin-top: -1px;
+    z-index: 1;
+    box-shadow: 0px 2px 3px -1px rgba(177,177,177,1);
 }
 .profile__tab-block{
-    width: calc(100% - 32px);
     position: absolute;
+    width: calc(100% - 32px);
     height: calc(100% - 32px);
 }
 
@@ -27,87 +29,91 @@
     padding-right: 15px;
     padding-bottom: 6px;
 }
-.avatar > img{
+.avatar__img{
+    border-radius: 5px;
+    margin-bottom: 5px;
     width: 132px;
     height: 169px;
+    box-shadow: inset 0 0 5px 0 rgba(206,206,206,1);
 }
-.avatar__button-add-hobby{
-    display: block;
+.avatar__img > img{
+    position: relative;
+    z-index: -1;
+    border-radius: 5px;
     width: 132px;
+    height: 169px;
+    background-size: cover!important;
+}
+.button-hobby{
     height: 30px;
-    text-align: center;
     background: linear-gradient(0deg, rgba(230,103,0,1) 41%, rgba(230,127,0,1) 56%);
     border-radius: 6px;
     color: #ffffff;
-    cursor: pointer;
     line-height: 30px;
     transition: .5s;
 }
-#addFriend:hover{
+.button-hobby:active{
     background: linear-gradient(0deg, rgba(230,127,0,1) 41%, rgba(230,103,0,1) 56%);
 }
-.mainInfoUser{
+.avatar__button{
+    width: 132px;
+}
+.user{
     width: calc(100% - 147px);
     height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
 }
-.mainInfoUser input:focus{
+.user input:focus{
     border-color: #0b7fb2!important;
 }
-#mainInfo{
-    height: auto;
-}
-.fullNameUser{
-    width: 100%;
-    border: 1px solid transparent;
+.user__input{
     display: block;
+    border: 1px solid transparent;
+}
+.user__input_lvl_top{
+    width: 100%;
+    text-transform: capitalize;
+}
+.user__full-name{
     font-size: 22px;
     font-weight: 600;
-    text-transform: capitalize;
 }
-.userLocation{
-    width: 100%;
-    border: 1px solid transparent;
+.user__location{
+    font-size: 12px;
+    color: #878787;
 }
-.userLocation, .friendStatus{
-    font-size: 10px;
-    text-transform: capitalize;
-    color: #99bf96;
-}
-.userContacts{
+.user__contact{
     height: auto;
     display: flex;
     padding: 20px 0;
 }
-.haracteristic, .valueHaracteristic{
+.user__data{
     width: auto;
     height: 70px;
 }
-.family, .phoneNumber, .email{
+.user__label{
     display: block;
     width: 140px;
     height: 23px;
     line-height: 23px;
 }
-.valuePhoneNumber, .valueFamily, .valueEmail{
-    display: block;
+.user__input_lvl_bottom{
     height: 23px;
-    border: 1px solid transparent;
     max-width: 168px;
     padding: 0 5px;
 }
-.valueEmail{
+.user__input-email{
     color: #0b7fb2;
     word-break: break-word;
     text-transform: lowercase;
     text-decoration: underline;
 }
-.haracteristic span, .hobbies{
+.user__span{
     font-weight: bold;
 }
-.userHobby{
+.user__hobbies{
     height: auto;
     max-height: 90px;
     overflow: auto;
@@ -118,6 +124,11 @@
 .hobby{
     position: relative;
     width: auto;
+    max-width: 150px;
+    height: 28px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
     border: 1px solid #d5d5d5;
     padding: 5px 10px;
     margin-right: 5px;
@@ -133,7 +144,8 @@
     color: #000000;
     padding-left: 20px;
 }
-.hobby::before, .hobby::after{
+.hobby::before,
+.hobby::after{
     content: '';
     width: 10px;
     height: 2px;
@@ -151,6 +163,7 @@
     transform: rotate(-45deg) translateY(-50%);
     margin-left: 1px;
 }
-.hobby:hover:before, .hobby:hover:after{
+.hobby:hover:before,
+.hobby:hover:after{
     opacity: 1;
 }
