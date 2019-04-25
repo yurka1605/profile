@@ -1,6 +1,6 @@
 @import '../blocks/main/main.css';
 @import '../blocks/popup/popup.css';
-@import '../blocks/message-info.css';
+@import '../blocks/message-info/message-info.css';
 @import '../blocks/overlay.css';
 @import '../blocks/spinner.css';
 

@@ -31,17 +31,17 @@ export const userHobby = document.querySelector('.user__hobbies');
 // Friends
 export const userFriends = document.querySelector('.profile__tab-block_friends');
 
-//default user settings 
+//default user settings
 export const defaultSettings = {
-    city: "undefined",
-    fullName: "undefined undefined",
-    hobby: [],
-    info: {
-        family: "undefined",
-        phone: "+7 (***) *** ** **",
-        email: "undefined@undefined.ru",
-    },
-    picture: "./assets/UserPic.png",
+  city: "undefined",
+  fullName: "undefined undefined",
+  hobby: [],
+  info: {
+    family: "undefined",
+    phone: "+7 (***) *** ** **",
+    email: "undefined@undefined.ru",
+  },
+  picture: "./assets/UserPic.png",
 };
 
 //spinner

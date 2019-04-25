@@ -10,4 +10,7 @@
         width: 100%;
         margin: 0 auto;
     }
+    .profile__tab-block_user{
+        flex-direction: column;
+    }
 }

@@ -6,9 +6,3 @@
     width: calc(100% - 32px);
     height: calc(100% - 32px);
 }
-
-@media (max-width: 600px) {
-    .profile__tab-block{
-        flex-direction: column;
-    }
-}

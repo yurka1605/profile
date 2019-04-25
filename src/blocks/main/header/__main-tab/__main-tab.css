@@ -19,7 +19,7 @@
     background: linear-gradient(to bottom, #0883b4 56%,#1c6cad 81%);
     color: #ffffff;
     z-index: 0;
-    box-shadow: none;
+    box-shadow: none!important;
 }
 .header__main-tab_deactivated:active{
     background: linear-gradient(to bottom, #1c6cad 19%,#0883b4 44%);
