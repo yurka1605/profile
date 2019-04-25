@@ -58,12 +58,16 @@ module.exports = {
       new HtmlWebpackPlugin({
         hash: false,
         template: `./src/index.html`,
-        filename: 'index.html'
       }),
       new MiniCssExtractPlugin({ filename: './css/[name].css' }),
       new CopyWebpackPlugin([
         { from: './src/assets', to: './assets' },
-        { from: './src', to: '' }
+        {
+          from: './src',
+          to: '',
+          force: true,
+          ignore: ['*.js', '*.html', '*.css', 'blocks/**/*']
+        }
       ])
     ]
 };
