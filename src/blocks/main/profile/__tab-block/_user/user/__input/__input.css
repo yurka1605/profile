@@ -1,0 +1,37 @@
+.user__input{
+    display: block;
+    border: 1px solid transparent;
+}
+.user__input_lvl_top{
+    width: 100%;
+    text-transform: capitalize;
+}
+.user__input_lvl_bottom{
+    height: 23px;
+    max-width: 168px;
+    padding: 0 5px;
+}
+.user__input-email{
+    color: #0b7fb2;
+    word-break: break-word;
+    text-transform: lowercase;
+    text-decoration: underline;
+}
+.user__full-name{
+    font-size: 22px;
+    font-weight: 600;
+}
+.user__location{
+    font-size: 12px;
+    color: #878787;
+}
+
+@media (max-width: 600px) {
+    .user__input_lvl_top{
+        text-align: center;
+    }    
+    .user__input_lvl_bottom{
+        width: 100%;
+        max-width: 100%;
+    }
+}

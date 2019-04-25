@@ -1,0 +1,24 @@
+@import './__button-close/__button-close.css';
+@import './__button/__button.css';
+@import './__input-field-enter/__input-field-enter.css';
+
+.popup{
+    z-index: 10110;
+    width: 250px;
+    height: 120px;
+    position: fixed;
+    background: #ffffff;
+    top: -100%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    transition: all linear 0.4s;
+    border-radius: 10px;
+    border: 2px solid #0b7fb2;
+    padding: 20px;
+    text-align: center;
+    box-shadow: -2px -1px 51px -9px rgba(255,255,255,1);
+}
+.popup_show{
+    top: 50%;
+}

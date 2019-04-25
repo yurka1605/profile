@@ -1,0 +1,15 @@
+.user__label{
+    display: block;
+    width: 140px;
+    height: 23px;
+    line-height: 23px;
+}
+
+@media (max-width: 400px) {
+    .user__label {
+        display: flex;
+        align-items: center;
+        line-height: 0.9;
+        width: 100%;
+    }
+}

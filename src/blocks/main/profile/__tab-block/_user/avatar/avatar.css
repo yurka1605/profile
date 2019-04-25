@@ -1,0 +1,15 @@
+@import './__button/__button.css';
+@import './__img/__img.css';
+
+.avatar{
+    width: 147px;
+    height: auto;
+    padding-right: 15px;
+    padding-bottom: 6px;
+}
+
+@media (max-width: 600px) {
+    .avatar{
+        margin: 0 auto;
+    }
+}

@@ -1,0 +1,20 @@
+.friend__info{
+    width: calc(100% - 60px);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 10px;
+}
+
+.friend__info-full-name,
+.friend__info-city-name{
+    width: 100%;
+    text-transform: capitalize;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+.friend__info-city-name{
+    font-size: 10px;
+}

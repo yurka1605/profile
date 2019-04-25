@@ -1,5 +1,5 @@
 'use strict';
-import './css/main.css';
+import './css/common.css';
 import { 
     fetcherForAll,
     fetcherForIE,

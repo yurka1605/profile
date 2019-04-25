@@ -1,0 +1,19 @@
+@import './hobby/hobby.css';
+
+.user__hobbies{
+    height: auto;
+    max-height: 90px;
+    overflow: auto;
+    margin-top: 6px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+@media (max-width: 600px) {
+    .user__hobbies{
+        margin: 0 10px;
+        width: 100%;
+        display: flex;
+        justify-content: space-around;
+    }
+}

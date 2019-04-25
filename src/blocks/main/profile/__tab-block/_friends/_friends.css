@@ -1,0 +1,16 @@
+@import './friend/friend.css';
+
+.profile__tab-block_friends{
+    display: none;
+    flex-wrap: wrap;
+    overflow: auto;
+    scrollbar-color: #107bb1 #ededed;
+    scrollbar-width: thin;
+    scrollbar-track-color: black;
+}
+
+@media (max-width: 600px) {
+    .profile__tab-block_friends{
+        flex-direction: row;
+    }
+}

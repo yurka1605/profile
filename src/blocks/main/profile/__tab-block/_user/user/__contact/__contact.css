@@ -1,0 +1,16 @@
+.user__contact{
+    height: auto;
+    display: flex;
+    padding: 20px 0;
+}
+
+@media (max-width: 600px) {
+    .user__contact {
+        justify-content: center;
+    }
+}
+@media (max-width: 400px) {
+    .user__contact {
+        padding: 10px 0;
+    }
+}

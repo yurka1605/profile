@@ -1,0 +1,46 @@
+.hobby{
+    position: relative;
+    width: auto;
+    max-width: 150px;
+    height: 28px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    border: 1px solid #d5d5d5;
+    padding: 5px 10px;
+    margin-right: 5px;
+    margin-bottom: 5px;
+    color: #3487ba;
+    cursor: pointer;
+    transition: .5s;
+    text-transform: capitalize;
+    word-break: break-word;
+}
+.hobby:hover{
+    background: #f3f3f3;
+    color: #000000;
+    padding-left: 20px;
+}
+.hobby::before,
+.hobby::after{
+    content: '';
+    width: 10px;
+    height: 2px;
+    background: #0b7fb2;
+    position: absolute;
+    left: 5%;
+    top: 50%;
+    opacity: 0;
+    transition: .6s linear;
+}
+.hobby::after{
+    transform: rotate(45deg) translateY(-50%);
+}
+.hobby::before{
+    transform: rotate(-45deg) translateY(-50%);
+    margin-left: 1px;
+}
+.hobby:hover:before,
+.hobby:hover:after{
+    opacity: 1;
+}

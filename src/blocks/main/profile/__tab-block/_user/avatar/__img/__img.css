@@ -1,0 +1,15 @@
+.avatar__img{
+    border-radius: 5px;
+    margin-bottom: 5px;
+    width: 132px;
+    height: 169px;
+    box-shadow: inset 0 0 5px 0 rgba(206,206,206,1);
+}
+.avatar__img > img{
+    position: relative;
+    z-index: -1;
+    border-radius: 5px;
+    width: 132px;
+    height: 169px;
+    background-size: cover!important;
+}

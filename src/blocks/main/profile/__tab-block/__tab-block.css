@@ -1,0 +1,14 @@
+@import './_friends/_friends.css';
+@import './_user/_user.css';
+
+.profile__tab-block{
+    position: absolute;
+    width: calc(100% - 32px);
+    height: calc(100% - 32px);
+}
+
+@media (max-width: 600px) {
+    .profile__tab-block{
+        flex-direction: column;
+    }
+}

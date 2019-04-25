@@ -1,0 +1,7 @@
+@media (max-width: 600px) {
+    .user__info{
+        height: auto;
+        width: 100%;
+        margin: 0 auto;
+    }
+}

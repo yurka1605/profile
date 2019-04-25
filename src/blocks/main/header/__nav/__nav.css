@@ -1,0 +1,6 @@
+.header__nav{
+    width: 270px;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+}

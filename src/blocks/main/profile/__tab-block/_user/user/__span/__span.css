@@ -1,0 +1,12 @@
+.user__span{
+    font-weight: bold;
+}
+
+@media (max-width: 600px) {
+    .user__span{
+        font-size: 16px;
+        width: auto;
+        margin: 0 auto;
+        padding-bottom: 10px;
+    }
+}

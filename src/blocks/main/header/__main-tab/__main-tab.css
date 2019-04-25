@@ -1,0 +1,26 @@
+.header__main-tab{
+    height: 32px;
+    color: #000000;
+    background: #ffffff;
+    font-size: 16px;
+    z-index: 1;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+    box-shadow: 0px 2px 3px -1px rgba(177,177,177,1);
+
+}
+.header__main-tab_type_profile-tab{
+     width: 92px;
+}
+.header__main-tab_type_friends-tab{
+    width: 169px;
+}
+.header__main-tab_deactivated{
+    background: linear-gradient(to bottom, #0883b4 56%,#1c6cad 81%);
+    color: #ffffff;
+    z-index: 0;
+    box-shadow: none;
+}
+.header__main-tab_deactivated:active{
+    background: linear-gradient(to bottom, #1c6cad 19%,#0883b4 44%);
+}

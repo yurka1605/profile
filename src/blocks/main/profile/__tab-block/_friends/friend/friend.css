@@ -1,0 +1,16 @@
+@import './__info-main/__info-main.css';
+@import './__info-status/__info-status.css';
+@import './__info.css/__info.css';
+
+.friend{
+    position: relative;
+    width: 219px;
+    height: 80px;
+    display: flex;
+    flex-wrap: nowrap;
+}
+.friend > img {
+    width: 60px;
+    height: 60px;
+    margin: 10px 0;
+}

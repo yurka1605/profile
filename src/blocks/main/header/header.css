@@ -1,0 +1,7 @@
+@import './__nav/__nav.css';
+@import './__main-tab/__main-tab.css';
+
+.header{
+    height: 32px;
+    width: 100%;
+}

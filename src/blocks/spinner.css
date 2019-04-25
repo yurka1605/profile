@@ -1,0 +1,23 @@
+.spinner{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transform-origin: center;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    border: 8px solid #ffffff;
+    border-top: 8px solid #4a76a8;
+    z-index: 10100;
+    display: block;
+    animation: spinner 1.5s linear infinite;
+}
+@-webkit-keyframes spinner {
+    from {transform: translate(-50%, -50%) rotate(0deg);}
+    to {transform: translate(-50%, -50%) rotate(360deg);}
+}
+@keyframes spinner {
+    from {transform: translate(-50%, -50%) rotate(0deg);}
+    to {transform: translate(-50%, -50%) rotate(360deg);}
+}

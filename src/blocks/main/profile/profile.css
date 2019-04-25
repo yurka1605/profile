@@ -1,0 +1,14 @@
+@import './__tab-block/__tab-block.css';
+
+.profile{
+    width: 100%;
+    height: calc(100% - 32px);
+    position: relative;
+    background: #ffffff;
+    border-radius: 6px;
+    border-top-left-radius: 0;
+    padding: 15px;
+    margin-top: -1px;
+    z-index: 1;
+    box-shadow: 0px 2px 3px -1px rgba(177,177,177,1);
+}
